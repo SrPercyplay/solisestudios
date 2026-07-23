@@ -51,7 +51,7 @@
             color: #00bcd4;
         }
 
-        /* Espaciador para evitar que el contenido quede oculto tras la barra fija */
+        /* Espaciador para la barra fija */
         .spacer {
             height: 70px;
         }
@@ -65,12 +65,12 @@
             background-attachment: fixed; 
             
             text-align: center;
-            padding: 120px 20px;
+            padding: 180px 20px; /* Aumentado para mostrar más la imagen completa */
             border-bottom: 3px solid #00bcd4;
             position: relative; 
         }
 
-        /* Capa oscura (Overlay) sobre la imagen para legibilidad del texto */
+        /* Capa con solo 10% de opacidad oscura */
         .hero::before {
             content: '';
             position: absolute;
@@ -78,11 +78,11 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background-color: rgba(0, 0, 0, 0.7);
+            background-color: rgba(0, 0, 0, 0.1); /* Reducido a solo 10% de opacidad */
             z-index: 1;
         }
 
-        /* Texto por encima de la capa oscura */
+        /* Texto sobre la capa con sombra negra para lectura clara */
         .hero h1, .hero p {
             position: relative;
             z-index: 2;
@@ -93,14 +93,15 @@
             color: #ffffff;
             text-transform: uppercase;
             letter-spacing: 3px;
-            text-shadow: 0 0 10px rgba(0, 188, 212, 0.7); 
+            text-shadow: 0 2px 8px rgba(0, 0, 0, 0.9), 0 0 10px rgba(0, 188, 212, 0.8); 
         }
 
         .hero p {
             margin-top: 15px;
-            font-size: 1.2rem;
-            color: #b0bec5;
+            font-size: 1.25rem;
+            color: #ffffff;
             font-style: italic;
+            text-shadow: 0 2px 6px rgba(0, 0, 0, 0.9);
         }
 
         /* Sección Sobre Mí */
@@ -182,7 +183,7 @@
 
     <div class="spacer"></div>
 
-    <!-- Sección de portada con imagen -->
+    <!-- Sección de portada con imagen muy visible -->
     <section id="inicio" class="hero">
         <h1>Fotografía y Edición</h1>
         <p>Una fotografía, un recuerdo</p>
