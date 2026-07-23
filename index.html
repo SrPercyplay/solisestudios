@@ -3,33 +3,184 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Solis Estudios</title>
+    <title>Solis Estudio | Fotografía y Edición</title>
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #121212;
-            color: #ffffff;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
+        * {
             margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #121212;
+            color: #e0e0e0;
+        }
+
+        /* Barra superior fija (Sticky Header) */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: #1a1a1a;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 50px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+            z-index: 1000;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #00bcd4;
+            letter-spacing: 2px;
+        }
+
+        nav a {
+            color: #ffffff;
+            text-decoration: none;
+            margin-left: 20px;
+            font-size: 0.95rem;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: #00bcd4;
+        }
+
+        /* Espaciador para evitar que el contenido quede oculto tras la barra fija */
+        .spacer {
+            height: 70px;
+        }
+
+        /* Hero / Banner principal */
+        .hero {
+            background-color: #1e1e1e;
+            text-align: center;
+            padding: 80px 20px;
+            border-bottom: 3px solid #00bcd4;
+        }
+
+        .hero h1 {
+            font-size: 2.8rem;
+            color: #ffffff;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+        }
+
+        .hero p {
+            margin-top: 15px;
+            font-size: 1.2rem;
+            color: #b0bec5;
+            font-style: italic;
+        }
+
+        /* Sección Sobre Mí */
+        .content-section {
+            max-width: 900px;
+            margin: 50px auto;
+            padding: 0 20px;
             text-align: center;
         }
-        h1 {
-            font-size: 3rem;
-            color: #00d2ff;
+
+        .content-section h2 {
+            font-size: 2rem;
+            color: #00bcd4;
+            margin-bottom: 20px;
+            text-transform: uppercase;
         }
-        p {
-            font-size: 1.2rem;
-            color: #ccc;
+
+        .content-section p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: #d1d5db;
+            margin-bottom: 30px;
+        }
+
+        .services-list {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .services-list li {
+            background-color: #242424;
+            padding: 20px 30px;
+            border-radius: 8px;
+            border-left: 4px solid #00bcd4;
+            font-size: 1.1rem;
+            font-weight: 500;
+        }
+
+        /* Pie de página / Contacto */
+        footer {
+            background-color: #1a1a1a;
+            text-align: center;
+            padding: 40px 20px;
+            margin-top: 60px;
+            border-top: 1px solid #333;
+        }
+
+        footer h3 {
+            margin-bottom: 15px;
+            color: #ffffff;
+        }
+
+        .social-links a {
+            color: #00bcd4;
+            text-decoration: none;
+            margin: 0 10px;
+            font-size: 1rem;
+        }
+
+        .social-links a:hover {
+            text-decoration: underline;
         }
     </style>
 </head>
 <body>
-    <div>
-        <h1>Solis Estudios</h1>
-        <p>Próximamente sitio web oficial.</p>
-    </div>
+
+    <!-- Barra de navegación fija arriba -->
+    <header>
+        <div class="logo">SOLIS ESTUDIO</div>
+        <nav>
+            <a href="#inicio">Inicio</a>
+            <a href="#servicios">Servicios</a>
+            <a href="#contacto">Contacto</a>
+        </nav>
+    </header>
+
+    <div class="spacer"></div>
+
+    <!-- Sección de portada -->
+    <section id="inicio" class="hero">
+        <h1>Fotografía y Edición</h1>
+        <p>Una fotografía, un recuerdo</p>
+    </section>
+
+    <!-- Sección Fotógrafo -->
+    <section id="servicios" class="content-section">
+        <h2>FOTÓGRAFO Y EDITOR</h2>
+        <p>Soy Percy Solis, fotógrafo y editor con estudios en Lino Fotografía.</p>
+
+        <ul class="services-list">
+            <li>Servicio de Fotografía</li>
+            <li>Servicio de Edición de imágenes</li>
+        </ul>
+    </section>
+
+    <!-- Pie de página -->
+    <footer id="contacto">
+        <h3>Solicita tu consulta o cotización</h3>
+        <div class="social-links">
+            <a href="#">Contacto / WhatsApp</a>
+        </div>
+    </footer>
+
 </body>
 </html>
