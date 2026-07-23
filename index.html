@@ -12,18 +12,18 @@
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
 
-        /* Aplicamos la imagen de fondo con 10% de tinte oscuro a toda la estructura principal */
+        /* Imagen extendida al 100% del ancho y alto (cover) */
         body {
             background-color: #121212;
             background-image: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1)), url('Solis Estudio.png');
-            background-size: contain;
-            background-position: top center;
+            background-size: cover;
+            background-position: center center;
             background-repeat: no-repeat;
             background-attachment: fixed;
             color: #e0e0e0;
         }
 
-        /* Barra superior fija limpia y pegada arriba */
+        /* Barra superior fija limpia */
         header {
             position: fixed;
             top: 0;
@@ -57,10 +57,10 @@
             color: #00bcd4;
         }
 
-        /* Portada / Banner (sin espacio negro superior) */
+        /* Portada / Banner */
         .hero {
             text-align: center;
-            padding: 140px 20px 60px 20px; /* Padding superior para no taparse con el header */
+            padding: 140px 20px 60px 20px;
         }
 
         .hero h1 {
@@ -79,15 +79,15 @@
             text-shadow: 0 2px 8px rgba(0, 0, 0, 0.9);
         }
 
-        /* Sección Sobre Mí con fondo semitransparente para ver el logo detrás */
+        /* Sección Sobre Mí con fondo traslúcido */
         .content-section {
             max-width: 900px;
             margin: 30px auto;
             padding: 40px 20px;
             text-align: center;
-            background-color: rgba(18, 18, 18, 0.4); /* 40% opaco para que pase la imagen pero sea legible */
+            background-color: rgba(18, 18, 18, 0.4);
             border-radius: 12px;
-            backdrop-filter: blur(3px); /* Difuminado sutil para resaltar texto */
+            backdrop-filter: blur(3px);
         }
 
         .content-section h2 {
@@ -161,13 +161,13 @@
         </nav>
     </header>
 
-    <!-- Sección de portada (sin el divisor ni espacio negro) -->
+    <!-- Sección de portada -->
     <section id="inicio" class="hero">
         <h1>Fotografía y Edición</h1>
         <p>Una fotografía, un recuerdo</p>
     </section>
 
-    <!-- Sección Fotógrafo con fondo traslúcido -->
+    <!-- Sección Fotógrafo -->
     <section id="servicios" class="content-section">
         <h2>FOTÓGRAFO Y EDITOR</h2>
         <p>Soy Percy Solis, fotógrafo y editor con estudios en Lino Fotografía.</p>
