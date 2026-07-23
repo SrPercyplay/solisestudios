@@ -56,12 +56,36 @@
             height: 70px;
         }
 
-        /* Hero / Banner principal */
+        /* Hero / Banner principal con la imagen de fondo */
         .hero {
-            background-color: #1e1e1e;
+            background-image: url('Solis Estudio.png'); 
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-attachment: fixed; 
+            
             text-align: center;
-            padding: 80px 20px;
+            padding: 120px 20px;
             border-bottom: 3px solid #00bcd4;
+            position: relative; 
+        }
+
+        /* Capa oscura (Overlay) sobre la imagen para legibilidad del texto */
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            z-index: 1;
+        }
+
+        /* Texto por encima de la capa oscura */
+        .hero h1, .hero p {
+            position: relative;
+            z-index: 2;
         }
 
         .hero h1 {
@@ -69,6 +93,7 @@
             color: #ffffff;
             text-transform: uppercase;
             letter-spacing: 3px;
+            text-shadow: 0 0 10px rgba(0, 188, 212, 0.7); 
         }
 
         .hero p {
@@ -157,7 +182,7 @@
 
     <div class="spacer"></div>
 
-    <!-- Sección de portada -->
+    <!-- Sección de portada con imagen -->
     <section id="inicio" class="hero">
         <h1>Fotografía y Edición</h1>
         <p>Una fotografía, un recuerdo</p>
