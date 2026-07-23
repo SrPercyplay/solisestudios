@@ -16,9 +16,10 @@
             font-family: 'Montserrat', sans-serif;
         }
 
+        /* Ruta absoluta desde la raíz para la imagen de fondo */
         body {
             background-color: #121212;
-            background-image: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1)), url('Solis Estudio.png');
+            background-image: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1)), url('/Solis Estudio.png');
             background-size: cover;
             background-position: center center;
             background-repeat: no-repeat;
@@ -122,13 +123,13 @@
 </head>
 <body>
 
-    <!-- Barra de navegación corregida -->
+    <!-- Barra de navegación fija con rutas absolutas -->
     <header>
         <div class="logo">SOLIS ESTUDIO</div>
         <nav>
-            <a href="index.html">Inicio</a>
-            <a href="servicios.html" class="active">Servicios</a>
-            <a href="contacto.html">Contacto</a>
+            <a href="/">Inicio</a>
+            <a href="/servicios/" class="active">Servicios</a>
+            <a href="/contacto/">Contacto</a>
         </nav>
     </header>
 
