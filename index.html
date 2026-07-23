@@ -4,10 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Solis Estudio | Fotografía y Edición</title>
+
+    <!-- Favicon (Ícono de la pestaña del navegador) -->
+    <link rel="icon" type="image/png" href="/Logo%20Estudio.png">
+
     <!-- Fuente elegante para fotografía -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,500;0,700;1,300&display=swap" rel="stylesheet">
+
     <style>
         * {
             margin: 0;
@@ -18,12 +23,16 @@
 
         body {
             background-color: #121212;
-            background-image: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1)), url('/Solis Estudio.png');
+            background-image: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), url('/Solis%20Estudio.png');
             background-size: cover;
             background-position: center center;
             background-repeat: no-repeat;
             background-attachment: fixed;
             color: #e0e0e0;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
         }
 
         /* Barra superior fija */
@@ -66,52 +75,78 @@
         /* Portada / Banner */
         .hero {
             text-align: center;
-            padding: 180px 20px 60px 20px;
+            padding: 140px 20px 20px 20px;
         }
 
         .hero h1 {
-            font-size: 2.8rem;
+            font-size: 2.5rem;
             font-weight: 700;
             color: #ffffff;
             text-transform: uppercase;
-            letter-spacing: 4px;
-            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.9), 0 0 12px rgba(0, 188, 212, 0.8);
+            letter-spacing: 5px;
+            text-shadow: 0 2px 12px rgba(0, 0, 0, 0.95), 0 0 15px rgba(0, 188, 212, 0.6);
         }
 
         .hero p {
-            margin-top: 15px;
-            font-size: 1.2rem;
+            margin-top: 10px;
+            font-size: 1.15rem;
             font-weight: 300;
             font-style: italic;
-            color: #ffffff;
-            letter-spacing: 2px;
-            text-shadow: 0 2px 8px rgba(0, 0, 0, 0.9);
+            color: #e0e0e0;
+            letter-spacing: 3px;
+            text-shadow: 0 2px 8px rgba(0, 0, 0, 0.95);
         }
 
-        /* Sección Biografía */
+        /* Botón de llamada a la acción */
+        .btn-cta {
+            display: inline-block;
+            margin-top: 25px;
+            padding: 12px 28px;
+            border: 1px solid #00bcd4;
+            background-color: rgba(0, 188, 212, 0.1);
+            color: #ffffff;
+            text-decoration: none;
+            font-size: 0.85rem;
+            font-weight: 500;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            border-radius: 30px;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(4px);
+        }
+
+        .btn-cta:hover {
+            background-color: #00bcd4;
+            color: #121212;
+            box-shadow: 0 0 15px rgba(0, 188, 212, 0.5);
+            transform: translateY(-2px);
+        }
+
+        /* Tarjeta inferior sutil */
         .content-section {
-            max-width: 900px;
-            margin: 30px auto 80px auto;
-            padding: 40px 20px;
+            max-width: 750px;
+            margin: 40px auto 50px auto;
+            padding: 25px 30px;
             text-align: center;
-            background-color: rgba(18, 18, 18, 0.4);
+            background-color: rgba(18, 18, 18, 0.35);
+            border: 1px solid rgba(0, 188, 212, 0.2);
             border-radius: 12px;
-            backdrop-filter: blur(3px);
+            backdrop-filter: blur(5px);
         }
 
         .content-section h2 {
-            font-size: 1.8rem;
+            font-size: 1.3rem;
             font-weight: 500;
             color: #00bcd4;
-            margin-bottom: 20px;
+            margin-bottom: 10px;
             text-transform: uppercase;
-            letter-spacing: 3px;
+            letter-spacing: 4px;
             text-shadow: 0 2px 8px rgba(0, 0, 0, 0.9);
         }
 
         .content-section p {
-            font-size: 1.05rem;
-            line-height: 1.8;
+            font-size: 0.98rem;
+            line-height: 1.7;
             color: #f0f0f0;
             font-weight: 300;
             text-shadow: 0 2px 5px rgba(0, 0, 0, 0.9);
@@ -120,7 +155,7 @@
 </head>
 <body>
 
-    <!-- Barra de navegación con rutas limpias -->
+    <!-- Barra de navegación fija -->
     <header>
         <div class="logo">SOLIS ESTUDIO</div>
         <nav>
@@ -130,16 +165,17 @@
         </nav>
     </header>
 
-    <!-- Sección de portada -->
+    <!-- Banner Superior -->
     <section class="hero">
         <h1>Fotografía y Edición</h1>
         <p>Una fotografía, un recuerdo</p>
+        <a href="/servicios/" class="btn-cta">Descubrir Servicios</a>
     </section>
 
-    <!-- Sección Biografía -->
+    <!-- Sección Biografía Sutil Inferior -->
     <section class="content-section">
-        <h2>FOTÓGRAFO Y EDITOR</h2>
-        <p>Soy Percy Solis, fotógrafo y editor con estudios en Lino Fotografía.</p>
+        <h2>Percy Solis</h2>
+        <p>Fotógrafo y editor profesional formado en Lino Fotografía. Capturando historias únicas a través de la lente y el retocado digital.</p>
     </section>
 
 </body>
