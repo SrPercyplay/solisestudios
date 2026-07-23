@@ -1,0 +1,1151 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LUMEN | Fotografía Futurista & Arte Visual</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Plus+Jakarta+Sans:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        /* ==========================================
+           VARIABLES Y CONFIGURACIÓN GENERAL
+        ========================================== */
+        :root {
+            --bg-primary: #060709;
+            --bg-secondary: #0d0f14;
+            --bg-card: rgba(18, 22, 31, 0.65);
+            --border-glass: rgba(102, 252, 241, 0.15);
+            --accent-cyan: #66fcf1;
+            --accent-glow: #45a29e;
+            --accent-gold: #e5c158;
+            --text-main: #f0f4f8;
+            --text-muted: #94a3b8;
+            --font-head: 'Orbitron', sans-serif;
+            --font-body: 'Plus Jakarta Sans', sans-serif;
+            --transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--bg-primary);
+            color: var(--text-main);
+            font-family: var(--font-body);
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        /* Background Grid Lines Effect */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: 
+                linear-gradient(to right, rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+            background-size: 80px 80px;
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-title h2 {
+            font-family: var(--font-head);
+            font-size: 2.5rem;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            background: linear-gradient(135deg, #fff 30%, var(--accent-cyan));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 0.5rem;
+        }
+
+        .section-title p {
+            color: var(--text-muted);
+            font-size: 1rem;
+            letter-spacing: 1px;
+        }
+
+        /* Buttons */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 0.9rem 2.2rem;
+            border-radius: 4px;
+            font-family: var(--font-head);
+            font-size: 0.85rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-primary {
+            background: transparent;
+            color: var(--accent-cyan);
+            border: 1px solid var(--accent-cyan);
+            box-shadow: 0 0 15px rgba(102, 252, 241, 0.2);
+        }
+
+        .btn-primary:hover {
+            background: var(--accent-cyan);
+            color: var(--bg-primary);
+            box-shadow: 0 0 30px rgba(102, 252, 241, 0.6);
+            transform: translateY(-2px);
+        }
+
+        .btn-secondary {
+            background: rgba(255, 255, 255, 0.05);
+            color: var(--text-main);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.15);
+            border-color: var(--text-main);
+        }
+
+        /* ==========================================
+           HEADER & NAVIGATION
+        ========================================== */
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            background: rgba(6, 7, 9, 0.7);
+            backdrop-filter: blur(15px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            transition: var(--transition);
+        }
+
+        .header.scrolled {
+            background: rgba(6, 7, 9, 0.95);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            border-bottom: 1px solid var(--border-glass);
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 90px;
+        }
+
+        .logo {
+            font-family: var(--font-head);
+            font-size: 1.8rem;
+            font-weight: 900;
+            letter-spacing: 4px;
+            color: var(--text-main);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .logo span {
+            color: var(--accent-cyan);
+            text-shadow: 0 0 10px var(--accent-cyan);
+        }
+
+        .nav-menu {
+            display: flex;
+            align-items: center;
+            gap: 2.5rem;
+        }
+
+        .nav-item {
+            position: relative;
+        }
+
+        .nav-link {
+            font-family: var(--font-head);
+            font-size: 0.85rem;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            color: var(--text-muted);
+            transition: var(--transition);
+            padding: 0.5rem 0;
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+        }
+
+        .nav-link:hover, .nav-item:hover > .nav-link {
+            color: var(--accent-cyan);
+            text-shadow: 0 0 8px rgba(102, 252, 241, 0.5);
+        }
+
+        /* Dropdown Menu */
+        .dropdown-menu {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            width: 220px;
+            background: rgba(13, 15, 20, 0.95);
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--border-glass);
+            border-radius: 8px;
+            padding: 0.8rem 0;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.6);
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(15px);
+            transition: var(--transition);
+            pointer-events: none;
+        }
+
+        .nav-item:hover .dropdown-menu {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+            pointer-events: all;
+        }
+
+        .dropdown-item a {
+            display: block;
+            padding: 0.6rem 1.5rem;
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            transition: var(--transition);
+        }
+
+        .dropdown-item a:hover {
+            color: var(--accent-cyan);
+            background: rgba(102, 252, 241, 0.05);
+            padding-left: 1.8rem;
+        }
+
+        .menu-toggle {
+            display: none;
+            font-size: 1.5rem;
+            color: var(--text-main);
+            cursor: pointer;
+        }
+
+        /* ==========================================
+           HERO SECTION
+        ========================================== */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            padding-top: 100px;
+            background: radial-gradient(circle at 80% 20%, rgba(69, 162, 158, 0.15) 0%, transparent 50%);
+        }
+
+        .hero-grid {
+            display: grid;
+            grid-template-columns: 1.2fr 0.8fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .hero-tag {
+            display: inline-block;
+            padding: 0.4rem 1rem;
+            background: rgba(102, 252, 241, 0.08);
+            border: 1px solid rgba(102, 252, 241, 0.2);
+            border-radius: 30px;
+            color: var(--accent-cyan);
+            font-family: var(--font-head);
+            font-size: 0.75rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero-title {
+            font-family: var(--font-head);
+            font-size: 4rem;
+            line-height: 1.1;
+            font-weight: 900;
+            letter-spacing: -1px;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero-title span {
+            color: transparent;
+            -webkit-text-stroke: 1px var(--accent-cyan);
+        }
+
+        .hero-description {
+            color: var(--text-muted);
+            font-size: 1.1rem;
+            margin-bottom: 2.5rem;
+            max-width: 540px;
+        }
+
+        .hero-actions {
+            display: flex;
+            gap: 1.5rem;
+        }
+
+        .hero-visual {
+            position: relative;
+        }
+
+        .hero-img-wrapper {
+            position: relative;
+            border-radius: 12px;
+            overflow: hidden;
+            border: 1px solid var(--border-glass);
+            box-shadow: 0 0 50px rgba(102, 252, 241, 0.1);
+        }
+
+        .hero-img-wrapper img {
+            width: 100%;
+            height: 520px;
+            object-fit: cover;
+            display: block;
+            filter: grayscale(20%) contrast(110%);
+            transition: var(--transition);
+        }
+
+        .hero-img-wrapper:hover img {
+            filter: grayscale(0%) scale(1.03);
+        }
+
+        /* HUD Overlay element */
+        .hud-element {
+            position: absolute;
+            bottom: -20px;
+            left: -20px;
+            background: rgba(13, 15, 20, 0.85);
+            backdrop-filter: blur(15px);
+            border: 1px solid var(--border-glass);
+            padding: 1.2rem;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+        }
+
+        .hud-element i {
+            font-size: 2rem;
+            color: var(--accent-cyan);
+        }
+
+        .hud-text h4 {
+            font-family: var(--font-head);
+            font-size: 0.9rem;
+        }
+
+        .hud-text p {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+        }
+
+        /* ==========================================
+           SERVICES SECTION
+        ========================================== */
+        .services {
+            padding: 8rem 0;
+            background: var(--bg-secondary);
+            position: relative;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .service-card {
+            background: var(--bg-card);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 12px;
+            padding: 2.5rem 2rem;
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(90deg, transparent, var(--accent-cyan), transparent);
+            opacity: 0;
+            transition: var(--transition);
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--border-glass);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+        }
+
+        .service-card:hover::before {
+            opacity: 1;
+        }
+
+        .service-icon {
+            width: 60px;
+            height: 60px;
+            background: rgba(102, 252, 241, 0.05);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            color: var(--accent-cyan);
+            margin-bottom: 1.5rem;
+            border: 1px solid rgba(102, 252, 241, 0.1);
+        }
+
+        .service-card h3 {
+            font-family: var(--font-head);
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+        }
+
+        .service-card p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .service-features {
+            margin-bottom: 2rem;
+        }
+
+        .service-features li {
+            font-size: 0.85rem;
+            color: var(--text-main);
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .service-features i {
+            color: var(--accent-cyan);
+            font-size: 0.75rem;
+        }
+
+        /* ==========================================
+           PORTFOLIO / GALLERY SECTION
+        ========================================== */
+        .portfolio {
+            padding: 8rem 0;
+        }
+
+        .portfolio-filters {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 3rem;
+            flex-wrap: wrap;
+        }
+
+        .filter-btn {
+            background: transparent;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: var(--text-muted);
+            padding: 0.6rem 1.5rem;
+            border-radius: 30px;
+            font-family: var(--font-head);
+            font-size: 0.75rem;
+            letter-spacing: 1px;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .filter-btn.active, .filter-btn:hover {
+            color: var(--accent-cyan);
+            border-color: var(--accent-cyan);
+            background: rgba(102, 252, 241, 0.05);
+            box-shadow: 0 0 15px rgba(102, 252, 241, 0.15);
+        }
+
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .portfolio-item {
+            position: relative;
+            border-radius: 10px;
+            overflow: hidden;
+            height: 380px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .portfolio-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+
+        .portfolio-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(6, 7, 9, 0.95) 0%, transparent 70%);
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            padding: 2rem;
+            opacity: 0;
+            transition: var(--transition);
+        }
+
+        .portfolio-item:hover img {
+            transform: scale(1.08);
+        }
+
+        .portfolio-item:hover .portfolio-overlay {
+            opacity: 1;
+        }
+
+        .portfolio-overlay h4 {
+            font-family: var(--font-head);
+            font-size: 1.2rem;
+            color: var(--text-main);
+        }
+
+        .portfolio-overlay p {
+            color: var(--accent-cyan);
+            font-size: 0.85rem;
+            margin-bottom: 0.5rem;
+        }
+
+        /* ==========================================
+           ABOUT / TECH SECTION
+        ========================================== */
+        .about {
+            padding: 8rem 0;
+            background: var(--bg-secondary);
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .about-text h3 {
+            font-family: var(--font-head);
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .about-text p {
+            color: var(--text-muted);
+            margin-bottom: 1.5rem;
+        }
+
+        .tech-specs {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .spec-box {
+            background: var(--bg-card);
+            border: 1px solid var(--border-glass);
+            padding: 1.2rem;
+            border-radius: 8px;
+        }
+
+        .spec-box h5 {
+            font-family: var(--font-head);
+            color: var(--accent-cyan);
+            font-size: 1rem;
+            margin-bottom: 0.3rem;
+        }
+
+        .spec-box p {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            margin: 0;
+        }
+
+        /* ==========================================
+           CONTACT SECTION
+        ========================================== */
+        .contact {
+            padding: 8rem 0;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1.2fr;
+            gap: 4rem;
+        }
+
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        .info-item {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+            background: var(--bg-card);
+            padding: 1.5rem;
+            border-radius: 8px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .info-item i {
+            font-size: 1.5rem;
+            color: var(--accent-cyan);
+        }
+
+        .info-item h5 {
+            font-family: var(--font-head);
+            font-size: 0.9rem;
+        }
+
+        .info-item p {
+            color: var(--text-muted);
+            font-size: 0.85rem;
+        }
+
+        .contact-form {
+            background: var(--bg-card);
+            border: 1px solid var(--border-glass);
+            padding: 3rem;
+            border-radius: 12px;
+            backdrop-filter: blur(10px);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            font-family: var(--font-head);
+            font-size: 0.75rem;
+            letter-spacing: 1px;
+            color: var(--text-muted);
+            margin-bottom: 0.5rem;
+            text-transform: uppercase;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 1rem;
+            background: rgba(6, 7, 9, 0.6);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 4px;
+            color: var(--text-main);
+            font-family: var(--font-body);
+            transition: var(--transition);
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: var(--accent-cyan);
+            box-shadow: 0 0 10px rgba(102, 252, 241, 0.2);
+        }
+
+        textarea.form-control {
+            resize: none;
+            height: 120px;
+        }
+
+        /* ==========================================
+           FOOTER
+        ========================================== */
+        .footer {
+            padding: 3rem 0;
+            background: var(--bg-primary);
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            text-align: center;
+        }
+
+        .footer-socials {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .footer-socials a {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.05);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-muted);
+            transition: var(--transition);
+        }
+
+        .footer-socials a:hover {
+            color: var(--accent-cyan);
+            background: rgba(102, 252, 241, 0.1);
+            transform: translateY(-3px);
+        }
+
+        .footer p {
+            color: var(--text-muted);
+            font-size: 0.8rem;
+        }
+
+        /* ==========================================
+           RESPONSIVE DESIGN
+        ========================================== */
+        @media (max-width: 992px) {
+            .hero-grid, .about-grid, .contact-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .hero-title {
+                font-size: 3rem;
+            }
+
+            .menu-toggle {
+                display: block;
+            }
+
+            .nav-menu {
+                position: fixed;
+                top: 90px;
+                left: -100%;
+                width: 100%;
+                height: calc(100vh - 90px);
+                background: var(--bg-primary);
+                flex-direction: column;
+                align-items: flex-start;
+                padding: 2rem;
+                transition: var(--transition);
+            }
+
+            .nav-menu.active {
+                left: 0;
+            }
+
+            .dropdown-menu {
+                position: static;
+                opacity: 1;
+                visibility: visible;
+                transform: none;
+                background: transparent;
+                border: none;
+                box-shadow: none;
+                display: none;
+                padding-left: 1rem;
+            }
+
+            .nav-item.active .dropdown-menu {
+                display: block;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- HEADER / NAVIGATION -->
+    <header class="header" id="header">
+        <div class="container nav-container">
+            <a href="#" class="logo">
+                <i class="fa-solid fa-camera-retro"></i> LUMEN<span>.AI</span>
+            </a>
+
+            <div class="menu-toggle" id="menuToggle">
+                <i class="fa-solid fa-bars"></i>
+            </div>
+
+            <nav>
+                <ul class="nav-menu" id="navMenu">
+                    <li class="nav-item">
+                        <a href="#home" class="nav-link">Inicio</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#services" class="nav-link">
+                            Servicios <i class="fa-solid fa-chevron-down" style="font-size: 0.6rem;"></i>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li class="dropdown-item"><a href="#services">Editorial Cyberpunk</a></li>
+                            <li class="dropdown-item"><a href="#services">Arquitectura Neón</a></li>
+                            <li class="dropdown-item"><a href="#services">Retrato Futurista</a></li>
+                            <li class="dropdown-item"><a href="#services">Edición & VFX</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#portfolio" class="nav-link">
+                            Galería <i class="fa-solid fa-chevron-down" style="font-size: 0.6rem;"></i>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li class="dropdown-item"><a href="#portfolio">Proyectos 2026</a></li>
+                            <li class="dropdown-item"><a href="#portfolio">Series Limitadas</a></li>
+                            <li class="dropdown-item"><a href="#portfolio">Detrás de Cámara</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#about" class="nav-link">Tecnología</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#contact" class="nav-link">Contacto</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- HERO SECTION -->
+    <section class="hero" id="home">
+        <div class="container hero-grid">
+            <div class="hero-content">
+                <span class="hero-tag"><i class="fa-solid fa-bolt"></i> Fotografía del Futuro</span>
+                <h1 class="hero-title">Capturando la <span>Luz</span> del Mañana</h1>
+                <p class="hero-description"> Fusiono tecnología de vanguardia, estética cyberpunk y la sutileza de la luz natural para crear imágenes memorables y de alto impacto visual. </p>
+                <div class="hero-actions">
+                    <a href="#portfolio" class="btn btn-primary"><i class="fa-solid fa-eye"></i> Explorar Galería</a>
+                    <a href="#contact" class="btn btn-secondary"><i class="fa-solid fa-paper-plane"></i> Cotizar</a>
+                </div>
+            </div>
+            <div class="hero-visual">
+                <div class="hero-img-wrapper">
+                    <img src="https://images.unsplash.com/photo-1508921912186-1d1a45ebb3c1?auto=format&fit=crop&w=1000&q=80" alt="Futuristic Photography">
+                </div>
+                <div class="hud-element">
+                    <i class="fa-solid fa-aperture"></i>
+                    <div class="hud-text">
+                        <h4>RAW 8K ULTRA-HD</h4>
+                        <p>Sensor de Formato Medio Dinámico</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SERVICES SECTION -->
+    <section class="services" id="services">
+        <div class="container">
+            <div class="section-title">
+                <h2>Servicios Especializados</h2>
+                <p>Soluciones visuales de nivel cinematográfico para marcas y particulares</p>
+            </div>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fa-solid fa-user-ninja"></i>
+                    </div>
+                    <h3>Retrato Cyber-Editorial</h3>
+                    <p>Sesiones de estudio o exteriores con iluminación estilizada neón, filtros atmosféricos y estética vanguardista.</p>
+                    <ul class="service-features">
+                        <li><i class="fa-solid fa-check"></i> Iluminación RGB cromática</li>
+                        <li><i class="fa-solid fa-check"></i> Maquillaje y estilismo conceptual</li>
+                        <li><i class="fa-solid fa-check"></i> Retoque digital avanzado</li>
+                    </ul>
+                    <a href="#contact" class="btn btn-primary" style="padding: 0.6rem 1.2rem; font-size: 0.75rem;">Reservar</a>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fa-solid fa-city"></i>
+                    </div>
+                    <h3>Arquitectura Neón</h3>
+                    <p>Captura nocturna de estructuras urbanas, paisajes de ciudad y conceptos arquitectónicos modernos.</p>
+                    <ul class="service-features">
+                        <li><i class="fa-solid fa-check"></i> Tomas aéreas con Drone 4K</li>
+                        <li><i class="fa-solid fa-check"></i> Larga exposición nocturna</li>
+                        <li><i class="fa-solid fa-check"></i> Entregables de alta resolución</li>
+                    </ul>
+                    <a href="#contact" class="btn btn-primary" style="padding: 0.6rem 1.2rem; font-size: 0.75rem;">Reservar</a>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fa-solid fa-wand-magic-sparkles"></i>
+                    </div>
+                    <h3>Post-Producción & VFX</h3>
+                    <p>Procesamiento de imagen mediante IA y retoque profesional para marcas comerciales y campañas publicitarias.</p>
+                    <ul class="service-features">
+                        <li><i class="fa-solid fa-check"></i> Composición CGI / Sci-Fi</li>
+                        <li><i class="fa-solid fa-check"></i> Color Grading cinematográfico</li>
+                        <li><i class="fa-solid fa-check"></i> Formatos para pantallas gigantes</li>
+                    </ul>
+                    <a href="#contact" class="btn btn-primary" style="padding: 0.6rem 1.2rem; font-size: 0.75rem;">Reservar</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PORTFOLIO SECTION -->
+    <section class="portfolio" id="portfolio">
+        <div class="container">
+            <div class="section-title">
+                <h2>Galería Interactiva</h2>
+                <p>Muestra selecta de trabajos recientes</p>
+            </div>
+
+            <div class="portfolio-filters">
+                <button class="filter-btn active" data-filter="all">Todos</button>
+                <button class="filter-btn" data-filter="retrato">Retratos</button>
+                <button class="filter-btn" data-filter="urbano">Urbano / Neón</button>
+                <button class="filter-btn" data-filter="moda">Moda Sci-Fi</button>
+            </div>
+
+            <div class="portfolio-grid">
+                <div class="portfolio-item" data-category="retrato">
+                    <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=800&q=80" alt="Retrato Futurista">
+                    <div class="portfolio-overlay">
+                        <p>Retrato</p>
+                        <h4>Project Cyber-Girl</h4>
+                    </div>
+                </div>
+
+                <div class="portfolio-item" data-category="urbano">
+                    <img src="https://images.unsplash.com/photo-1519501025264-65ba15a82390?auto=format&fit=crop&w=800&q=80" alt="Ciudad Neón">
+                    <div class="portfolio-overlay">
+                        <p>Urbano</p>
+                        <h4>Noches de Tokio</h4>
+                    </div>
+                </div>
+
+                <div class="portfolio-item" data-category="moda">
+                    <img src="https://images.unsplash.com/photo-1509631179647-0177331693ae?auto=format&fit=crop&w=800&q=80" alt="Moda">
+                    <div class="portfolio-overlay">
+                        <p>Moda Sci-Fi</p>
+                        <h4>Colección Prisma 2026</h4>
+                    </div>
+                </div>
+
+                <div class="portfolio-item" data-category="retrato">
+                    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=800&q=80" alt="Retrato">
+                    <div class="portfolio-overlay">
+                        <p>Retrato</p>
+                        <h4>Sombra & Neón</h4>
+                    </div>
+                </div>
+
+                <div class="portfolio-item" data-category="urbano">
+                    <img src="https://images.unsplash.com/photo-1492691527719-9d1e07e534b4?auto=format&fit=crop&w=800&q=80" alt="Paisaje Sci-Fi">
+                    <div class="portfolio-overlay">
+                        <p>Urbano</p>
+                        <h4>Arquitectura Sintética</h4>
+                    </div>
+                </div>
+
+                <div class="portfolio-item" data-category="moda">
+                    <img src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&w=800&q=80" alt="Moda Futurista">
+                    <div class="portfolio-overlay">
+                        <p>Moda Sci-Fi</p>
+                        <h4>Concepto Holo-Wear</h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ABOUT / TECH SECTION -->
+    <section class="about" id="about">
+        <div class="container about-grid">
+            <div class="about-text">
+                <span class="hero-tag">Metodología & Equipo</span>
+                <h3>Tecnología Visual Sin Límites</h3>
+                <p>Como fotógrafo profesional, entiendo que la visión artística requiere de las herramientas más precisas. Utilizo equipos de última generación combinados con flujos de trabajo computacionales para garantizar máxima nitidez y rango dinámico.</p>
+                
+                <div class="tech-specs">
+                    <div class="spec-box">
+                        <h5>Cámaras Mirrorless</h5>
+                        <p>Formatos Full Frame & Medio Formato de alta velocidad.</p>
+                    </div>
+                    <div class="spec-box">
+                        <h5>Iluminación Láser & LED</h5>
+                        <p>Luces continuas sincronizadas mediante protocolo inalámbrico.</p>
+                    </div>
+                    <div class="spec-box">
+                        <h5>Drones Cinematográficos</h5>
+                        <p>Captura aérea con sensores RAW 4K a 120fps.</p>
+                    </div>
+                    <div class="spec-box">
+                        <h5>Procesamiento IA</h5>
+                        <p>Aumento de resolución y restauración sin pérdida.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="about-visual">
+                <div class="hero-img-wrapper">
+                    <img src="https://images.unsplash.com/photo-1516035069371-29a1b244cc32?auto=format&fit=crop&w=1000&q=80" alt="Camera Gear">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACT SECTION -->
+    <section class="contact" id="contact">
+        <div class="container">
+            <div class="section-title">
+                <h2>Iniciar Proyecto</h2>
+                <p>Reserva tu sesión o solicita una propuesta comercial</p>
+            </div>
+
+            <div class="contact-grid">
+                <div class="contact-info">
+                    <div class="info-item">
+                        <i class="fa-solid fa-location-dot"></i>
+                        <div>
+                            <h5>Ubicación Studio</h5>
+                            <p>Distrito de Innovación, Studio 84</p>
+                        </div>
+                    </div>
+                    <div class="info-item">
+                        <i class="fa-solid fa-envelope"></i>
+                        <div>
+                            <h5>Correo Electrónico</h5>
+                            <p>contacto@lumen-photo.com</p>
+                        </div>
+                    </div>
+                    <div class="info-item">
+                        <i class="fa-solid fa-phone-volume"></i>
+                        <div>
+                            <h5>Teléfono / WhatsApp</h5>
+                            <p>+51 987 654 321</p>
+                        </div>
+                    </div>
+                </div>
+
+                <form class="contact-form" onsubmit="event.preventDefault(); alert('¡Mensaje enviado con éxito! Nos pondremos en contacto muy pronto.');">
+                    <div class="form-group">
+                        <label>Nombre Completo</label>
+                        <input type="text" class="form-control" placeholder="Ej. Valeria Vega" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Correo Electrónico</label>
+                        <input type="email" class="form-control" placeholder="valeria@ejemplo.com" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Tipo de Servicio</label>
+                        <select class="form-control" style="background: #060709;">
+                            <option>Retrato Cyber-Editorial</option>
+                            <option>Arquitectura / Nocturna</option>
+                            <option>Moda & Campaña</option>
+                            <option>Edición & VFX</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Detalles del Proyecto</label>
+                        <textarea class="form-control" placeholder="Describa la idea, fecha estimada y requerimientos..." required></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary" style="width: 100%; justify-content: center;">
+                        <i class="fa-solid fa-paper-plane"></i> Enviar Mensaje
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-socials">
+                <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                <a href="#"><i class="fa-brands fa-behance"></i></a>
+                <a href="#"><i class="fa-brands fa-x-twitter"></i></a>
+                <a href="#"><i class="fa-brands fa-youtube"></i></a>
+            </div>
+            <p>&copy; 2026 LUMEN Studio. Todos los derechos reservados. Diseñado para la era digital.</p>
+        </div>
+    </footer>
+
+    <!-- JAVASCRIPT LOGIC -->
+    <script>
+        // Navbar Scroll Effect
+        const header = id = document.getElementById('header');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+
+        // Mobile Menu Toggle
+        const menuToggle = document.getElementById('menuToggle');
+        const navMenu = document.getElementById('navMenu');
+
+        menuToggle.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+        });
+
+        // Toggle dropdowns on mobile
+        const navItems = document.querySelectorAll('.nav-item');
+        navItems.forEach(item => {
+            item.addEventListener('click', () => {
+                if(window.innerWidth <= 992) {
+                    item.classList.toggle('active');
+                }
+            });
+        });
+
+        // Portfolio Filter Logic
+        const filterBtns = document.querySelectorAll('.filter-btn');
+        const portfolioItems = document.querySelectorAll('.portfolio-item');
+
+        filterBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                // Remove active class from all
+                filterBtns.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+
+                const filter = btn.getAttribute('data-filter');
+
+                portfolioItems.forEach(item => {
+                    if (filter === 'all' || item.getAttribute('data-category') === filter) {
+                        item.style.display = 'block';
+                    } else {
+                        item.style.display = 'none';
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
