@@ -1,0 +1,684 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Solis Estudio | Fotografía & Estética Estelar</title>
+    <!-- Google Fonts & Font Awesome -->
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700&family=Inter:wght@300;400;500;600&family=Syne:wght@500;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        /* PALETA ESPACIAL & ESTELAR */
+        :root {
+            --bg-space: #05070B;        /* Espacio profundo / Negro noche */
+            --bg-card: #0B0E17;         /* Azul medianoche oscuro */
+            --bg-card-hover: #111625;   /* Azul cósmico ligeramente más claro */
+            --text-starlight: #E2E8F0;  /* Plata estelar */
+            --text-muted: #71717A;      /* Polvo de estrellas apagado */
+            --accent-cyan: #38BDF8;     /* Destello estelar azul */
+            --accent-gold: #FDE047;     /* Luz de estrella brillante */
+            --border-space: #1E293B;    /* Borde orbital tenue */
+            --glow-star: 0 0 15px rgba(56, 189, 248, 0.25);
+            --font-title: 'Syne', sans-serif;
+            --font-accent: 'Cinzel Decorative', serif;
+            --font-body: 'Inter', sans-serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--bg-space);
+            color: var(--text-starlight);
+            font-family: var(--font-body);
+            font-size: 16px;
+            line-height: 1.7;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* LIENZO DE ESTRELLAS DE FONDO */
+        #starfield {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 25px;
+        }
+
+        section {
+            padding: 110px 0;
+            position: relative;
+        }
+
+        /* TIPOGRAFÍA & EFECTOS DE LUZ */
+        h1, h2, h3, h4 {
+            font-family: var(--font-title);
+            font-weight: 700;
+            color: var(--text-starlight);
+            letter-spacing: 1px;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-title h2 {
+            font-size: 2.8rem;
+            margin-bottom: 10px;
+            background: linear-gradient(180deg, #FFFFFF 0%, #94A3B8 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .section-title p {
+            color: var(--accent-cyan);
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+        }
+
+        .star-divider {
+            color: var(--accent-gold);
+            font-size: 0.8rem;
+            margin: 15px 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        .star-divider::before, .star-divider::after {
+            content: '';
+            width: 50px;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--border-space), transparent);
+        }
+
+        /* BOTONES LUMINOSOS */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 14px 32px;
+            font-family: var(--font-body);
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            text-decoration: none;
+            transition: all 0.4s ease;
+            cursor: pointer;
+            border-radius: 4px;
+            position: relative;
+        }
+
+        .btn-starlight {
+            background: rgba(56, 189, 248, 0.1);
+            color: var(--accent-cyan);
+            border: 1px solid var(--accent-cyan);
+            box-shadow: var(--glow-star);
+        }
+
+        .btn-starlight:hover {
+            background: var(--accent-cyan);
+            color: var(--bg-space);
+            box-shadow: 0 0 25px rgba(56, 189, 248, 0.6);
+            transform: translateY(-2px);
+        }
+
+        /* NAVEGACIÓN SUPERIOR */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            background: rgba(5, 7, 11, 0.85);
+            backdrop-filter: blur(15px);
+            border-bottom: 1px solid var(--border-space);
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+        }
+
+        .logo {
+            font-family: var(--font-accent);
+            font-size: 1.4rem;
+            color: var(--text-starlight);
+            text-decoration: none;
+            letter-spacing: 2px;
+        }
+
+        .logo span {
+            color: var(--accent-cyan);
+            text-shadow: 0 0 10px rgba(56, 189, 248, 0.5);
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 35px;
+            align-items: center;
+        }
+
+        .nav-link {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 0.85rem;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            transition: all 0.3s ease;
+        }
+
+        .nav-link:hover {
+            color: var(--accent-cyan);
+            text-shadow: 0 0 8px rgba(56, 189, 248, 0.5);
+        }
+
+        .dropdown {
+            position: relative;
+        }
+
+        .dropdown-menu {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            width: 200px;
+            background: var(--bg-card);
+            border: 1px solid var(--border-space);
+            padding: 10px 0;
+            list-style: none;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            border-radius: 4px;
+        }
+
+        .dropdown:hover .dropdown-menu {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .dropdown-menu li a {
+            display: block;
+            padding: 8px 20px;
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 0.8rem;
+            transition: all 0.3s ease;
+        }
+
+        .dropdown-menu li a:hover {
+            color: var(--accent-cyan);
+            background: rgba(56, 189, 248, 0.05);
+        }
+
+        /* HERO SECTION */
+        .hero {
+            min-height: 95vh;
+            display: flex;
+            align-items: center;
+            padding-top: 100px;
+        }
+
+        .hero-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .hero-text h1 {
+            font-size: 3.8rem;
+            line-height: 1.1;
+            margin-bottom: 25px;
+        }
+
+        .hero-text h1 i {
+            color: var(--accent-gold);
+            font-style: normal;
+            text-shadow: 0 0 12px rgba(253, 224, 71, 0.6);
+        }
+
+        .hero-text p {
+            color: var(--text-muted);
+            font-size: 1.05rem;
+            margin-bottom: 35px;
+            font-weight: 300;
+        }
+
+        .hero-img-box {
+            position: relative;
+            padding: 10px;
+            background: var(--bg-card);
+            border: 1px solid var(--border-space);
+            border-radius: 8px;
+            box-shadow: 0 0 30px rgba(0,0,0,0.8);
+        }
+
+        .hero-img-box img {
+            width: 100%;
+            height: 500px;
+            object-fit: cover;
+            border-radius: 4px;
+            filter: contrast(110%) brightness(85%);
+        }
+
+        /* SERVICIOS ESTELARES */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 30px;
+        }
+
+        .service-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-space);
+            padding: 40px 30px;
+            border-radius: 8px;
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .service-card:hover {
+            background: var(--bg-card-hover);
+            border-color: var(--accent-cyan);
+            transform: translateY(-6px);
+            box-shadow: var(--glow-star);
+        }
+
+        .service-icon {
+            font-size: 2rem;
+            color: var(--accent-gold);
+            margin-bottom: 20px;
+            text-shadow: 0 0 10px rgba(253, 224, 71, 0.4);
+        }
+
+        .service-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 12px;
+        }
+
+        .service-card p {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            font-weight: 300;
+        }
+
+        /* GALERÍA EN CONSTELACIÓN */
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+
+        .portfolio-item {
+            background: var(--bg-card);
+            border: 1px solid var(--border-space);
+            padding: 12px;
+            border-radius: 8px;
+            transition: all 0.4s ease;
+        }
+
+        .portfolio-item:hover {
+            border-color: var(--accent-cyan);
+            box-shadow: var(--glow-star);
+        }
+
+        .portfolio-img-wrapper {
+            overflow: hidden;
+            height: 360px;
+            border-radius: 4px;
+        }
+
+        .portfolio-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: brightness(80%) contrast(105%);
+            transition: transform 0.6s ease;
+        }
+
+        .portfolio-item:hover img {
+            transform: scale(1.08);
+            filter: brightness(95%);
+        }
+
+        .portfolio-info {
+            padding: 15px 5px 5px 5px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .portfolio-info h4 {
+            font-size: 1.1rem;
+        }
+
+        .portfolio-info span {
+            font-size: 0.75rem;
+            color: var(--accent-cyan);
+            letter-spacing: 1px;
+        }
+
+        /* CONTACTO CÓSMICO */
+        .contact-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-space);
+            border-radius: 12px;
+            padding: 50px;
+            max-width: 850px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.6);
+        }
+
+        .contact-info {
+            border-right: 1px solid var(--border-space);
+            padding-right: 30px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .whatsapp-box {
+            margin-top: 25px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .whatsapp-box i {
+            font-size: 2.2rem;
+            color: #25D366;
+        }
+
+        .whatsapp-box a {
+            font-family: var(--font-title);
+            font-size: 1.3rem;
+            color: var(--text-starlight);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .whatsapp-box a:hover {
+            color: var(--accent-cyan);
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            margin-bottom: 8px;
+            color: var(--text-muted);
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 12px;
+            background: var(--bg-space);
+            border: 1px solid var(--border-space);
+            color: var(--text-starlight);
+            font-family: var(--font-body);
+            border-radius: 4px;
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: var(--accent-cyan);
+            box-shadow: 0 0 10px rgba(56, 189, 248, 0.2);
+        }
+
+        /* FOOTER */
+        footer {
+            padding: 40px 0;
+            text-align: center;
+            border-top: 1px solid var(--border-space);
+            color: var(--text-muted);
+            font-size: 0.85rem;
+        }
+
+        @media (max-width: 900px) {
+            .hero-grid, .contact-card, .portfolio-grid {
+                grid-template-columns: 1fr;
+            }
+            .contact-info {
+                border-right: none;
+                border-bottom: 1px solid var(--border-space);
+                padding-bottom: 30px;
+                padding-right: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- CANVA PARA ESTRELLAS ANIMADAS -->
+    <canvas id="starfield"></canvas>
+
+    <!-- HEADER NAVIGATION -->
+    <header>
+        <div class="container nav-container">
+            <a href="#" class="logo">SOLIS <span>ESTUDIO</span></a>
+            <ul class="nav-menu">
+                <li><a href="#home" class="nav-link">Inicio</a></li>
+                <li class="dropdown">
+                    <a href="#services" class="nav-link">Especialidades <i class="fa-solid fa-chevron-down" style="font-size: 0.6rem;"></i></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#services">Fotografía Nocturna</a></li>
+                        <li><a href="#services">Retrato de Iluminación</a></li>
+                        <li><a href="#services">Edición Estelar</a></li>
+                    </ul>
+                </li>
+                <li><a href="#portfolio" class="nav-link">Galería</a></li>
+                <li><a href="#contact" class="nav-link">Contacto</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <!-- HERO SECTION -->
+    <section class="hero" id="home">
+        <div class="container hero-grid">
+            <div class="hero-text">
+                <h1>Capturando la luz en la <i>oscuridad</i>.</h1>
+                <div class="star-divider">✦ ✦ ✦</div>
+                <p>Fotografía de autor enfocada en contrastes profundos, destellos sutiles y atmósferas envolventes. Creamos imágenes con el brillo propio de las estrellas.</p>
+                <a href="#contact" class="btn btn-starlight"><i class="fa-solid fa-star"></i> Reservar Sesión</a>
+            </div>
+            <div class="hero-img-box">
+                <img src="https://images.unsplash.com/photo-1506703719100-a0f3a48c0f86?auto=format&fit=crop&w=1000&q=80" alt="Fotografía Estelar Solis Estudio">
+            </div>
+        </div>
+    </section>
+
+    <!-- SERVICIOS -->
+    <section id="services">
+        <div class="container">
+            <div class="section-title">
+                <p>Nuestra Visión</p>
+                <h2>Servicios Especializados</h2>
+                <div class="star-divider">✦</div>
+            </div>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon"><i class="fa-solid fa-star-of-david"></i></div>
+                    <h3>Retrato Estelar</h3>
+                    <p>Enfoque en puntos de luz puntuales y sombras profundas para resaltar cada detalle.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon"><i class="fa-solid fa-moon"></i></div>
+                    <h3>Astro-Fotografía Fine Art</h3>
+                    <p>Captura de paisajes nocturnos bajo mantos de estrellas puras e intensas.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon"><i class="fa-solid fa-wand-magic-sparkles"></i></div>
+                    <h3>Procesado de Contraste</h3>
+                    <p>Ajuste de brillo y limpiezas cromáticas para acentuar luces sin ruido visual.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PORTAFOLIO -->
+    <section id="portfolio">
+        <div class="container">
+            <div class="section-title">
+                <p>Constelación de Obras</p>
+                <h2>Galería Seleccionada</h2>
+                <div class="star-divider">✦</div>
+            </div>
+            <div class="portfolio-grid">
+                <div class="portfolio-item">
+                    <div class="portfolio-img-wrapper">
+                        <img src="https://images.unsplash.com/photo-1519681393784-d120267933ba?auto=format&fit=crop&w=800&q=80" alt="Noche Estelar 1">
+                    </div>
+                    <div class="portfolio-info">
+                        <h4>Destello Nocturno</h4>
+                        <span>Noche Profunda</span>
+                    </div>
+                </div>
+                <div class="portfolio-item">
+                    <div class="portfolio-img-wrapper">
+                        <img src="https://images.unsplash.com/photo-1464802686167-b939a6910659?auto=format&fit=crop&w=800&q=80" alt="Noche Estelar 2">
+                    </div>
+                    <div class="portfolio-info">
+                        <h4>Manto de Luz</h4>
+                        <span>Astro-Art</span>
+                    </div>
+                </div>
+                <div class="portfolio-item">
+                    <div class="portfolio-img-wrapper">
+                        <img src="https://images.unsplash.com/photo-1509198397868-475647b2a1e5?auto=format&fit=crop&w=800&q=80" alt="Noche Estelar 3">
+                    </div>
+                    <div class="portfolio-info">
+                        <h4>Luz Distante</h4>
+                        <span>Retrato Nocturno</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACTO -->
+    <section id="contact">
+        <div class="container">
+            <div class="section-title">
+                <p>Conexión Directa</p>
+                <h2>Escríbenos</h2>
+                <div class="star-divider">✦</div>
+            </div>
+            <div class="contact-card">
+                <div class="contact-info">
+                    <h3>Solis Estudio</h3>
+                    <p style="color: var(--text-muted); font-size: 0.9rem; margin-top: 10px;">Atención personalizada para agendar tu próxima sesión de fotos o consulta de proyecto.</p>
+                    <div class="whatsapp-box">
+                        <i class="fa-brands fa-whatsapp"></i>
+                        <div>
+                            <span style="font-size: 0.75rem; color: var(--text-muted); text-transform: uppercase;">WhatsApp Directo</span><br>
+                            <a href="https://wa.me/59162617853" target="_blank" rel="noopener noreferrer">+591 62617853</a>
+                        </div>
+                    </div>
+                </div>
+
+                <form onsubmit="event.preventDefault();">
+                    <div class="form-group">
+                        <label>Nombre</label>
+                        <input type="text" class="form-control" placeholder="Tu nombre">
+                    </div>
+                    <div class="form-group">
+                        <label>Email</label>
+                        <input type="email" class="form-control" placeholder="tu@email.com">
+                    </div>
+                    <div class="form-group">
+                        <label>Mensaje</label>
+                        <textarea class="form-control" rows="3" placeholder="Escribe tus ideas aquí..."></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-starlight" style="width: 100%; justify-content: center;">Enviar Consulta</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <p>&copy; 2026 Solis Estudio. Todos los derechos reservados.</p>
+    </footer>
+
+    <!-- SCRIPT DE CAMPO DE ESTRELLAS -->
+    <script>
+        const canvas = document.getElementById('starfield');
+        const ctx = canvas.getContext('2d');
+
+        function resizeCanvas() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        }
+        resizeCanvas();
+        window.addEventListener('resize', resizeCanvas);
+
+        // Crear array de estrellas
+        const stars = [];
+        const numStars = 180;
+
+        for (let i = 0; i < numStars; i++) {
+            stars.push({
+                x: Math.random() * canvas.width,
+                y: Math.random() * canvas.height,
+                radius: Math.random() * 1.5,
+                alpha: Math.random(),
+                speed: Math.random() * 0.02 + 0.005
+            });
+        }
+
+        function animateStars() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+            stars.forEach(star => {
+                // Variación de parpadeo suave
+                star.alpha += star.speed;
+                if (star.alpha > 1 || star.alpha < 0.1) {
+                    star.speed = -star.speed;
+                }
+
+                ctx.beginPath();
+                ctx.arc(star.x, star.y, star.radius, 0, Math.PI * 2);
+                ctx.fillStyle = `rgba(226, 232, 240, ${Math.abs(star.alpha)})`;
+                ctx.shadowBlur = 8;
+                ctx.shadowColor = '#38BDF8';
+                ctx.fill();
+            });
+
+            requestAnimationFrame(animateStars);
+        }
+
+        animateStars();
+    </script>
+</body>
+</html>
