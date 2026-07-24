@@ -1,0 +1,905 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Solis Estudio | Fotografía Editorial & Elegante</title>
+    <!-- Google Fonts & Font Awesome Icons -->
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        /* PALETA CLARA & ELEGANTE */
+        :root {
+            --bg-body: #FAF9F6;         /* Blanco calido / Marfil suave */
+            --bg-card: #FFFFFF;         /* Blanco puro para tarjetas */
+            --text-dark: #1C1C1C;       /* Negro carbón elegante */
+            --text-muted: #666666;      /* Gris medio suave */
+            --accent-gold: #C5A880;     /* Tono champaña / oro suave */
+            --accent-gold-hover: #A88B63;
+            --border-soft: #EAE6DF;     /* Borde discreto */
+            --shadow-light: 0 10px 30px rgba(0, 0, 0, 0.04);
+            --shadow-hover: 0 15px 35px rgba(197, 168, 128, 0.15);
+            --font-title: 'Cormorant Garamond', serif;
+            --font-body: 'Montserrat', sans-serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--bg-body);
+            color: var(--text-dark);
+            font-family: var(--font-body);
+            font-size: 15px;
+            line-height: 1.8;
+            overflow-x: hidden;
+        }
+
+        /* TIPOGRAFÍA & UTILITIES */
+        .container {
+            max-width: 1240px;
+            margin: 0 auto;
+            padding: 0 25px;
+        }
+
+        section {
+            padding: 110px 0;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: var(--font-title);
+            font-weight: 500;
+            letter-spacing: 1px;
+            color: var(--text-dark);
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-title h2 {
+            font-size: 3rem;
+            line-height: 1.1;
+            margin-bottom: 12px;
+        }
+
+        .section-title p {
+            color: var(--accent-gold);
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-weight: 500;
+        }
+
+        /* BOTONES ELEGANTES */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 14px 32px;
+            font-family: var(--font-body);
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            text-decoration: none;
+            transition: all 0.4s ease;
+            cursor: pointer;
+            border-radius: 0px; /* Bordes rectos tipo alta costura */
+        }
+
+        .btn-gold {
+            background-color: var(--text-dark);
+            color: #FFFFFF;
+            border: 1px solid var(--text-dark);
+        }
+
+        .btn-gold:hover {
+            background-color: var(--accent-gold);
+            border-color: var(--accent-gold);
+            color: #FFFFFF;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(197, 168, 128, 0.3);
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: var(--text-dark);
+            border: 1px solid var(--text-dark);
+        }
+
+        .btn-outline:hover {
+            background: var(--text-dark);
+            color: #FFFFFF;
+            transform: translateY(-3px);
+        }
+
+        /* HEADER & NAVEGACIÓN SUPERIOR */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            background: rgba(250, 249, 246, 0.85);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--border-soft);
+            transition: all 0.3s ease;
+        }
+
+        header.scrolled {
+            padding: 5px 0;
+            background: rgba(255, 255, 255, 0.95);
+            box-shadow: var(--shadow-light);
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 22px 0;
+        }
+
+        .logo {
+            font-family: var(--font-title);
+            font-size: 1.8rem;
+            font-weight: 600;
+            color: var(--text-dark);
+            text-decoration: none;
+            letter-spacing: 2px;
+        }
+
+        .logo span {
+            color: var(--accent-gold);
+            font-weight: 300;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 35px;
+            align-items: center;
+        }
+
+        .nav-link {
+            color: var(--text-dark);
+            text-decoration: none;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            transition: color 0.3s ease;
+            position: relative;
+            padding: 5px 0;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            width: 0;
+            height: 1px;
+            background: var(--accent-gold);
+            transition: all 0.3s ease;
+            transform: translateX(-50%);
+        }
+
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        .nav-link:hover {
+            color: var(--accent-gold);
+        }
+
+        /* Dropdown Estilo Claro */
+        .dropdown {
+            position: relative;
+        }
+
+        .dropdown-menu {
+            position: absolute;
+            top: 100%;
+            left: -10px;
+            width: 220px;
+            background: var(--bg-card);
+            border: 1px solid var(--border-soft);
+            padding: 15px 0;
+            list-style: none;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(15px);
+            transition: all 0.3s ease;
+            box-shadow: var(--shadow-light);
+        }
+
+        .dropdown:hover .dropdown-menu {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .dropdown-menu li a {
+            display: block;
+            padding: 8px 20px;
+            color: var(--text-dark);
+            text-decoration: none;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+        }
+
+        .dropdown-menu li a:hover {
+            background: var(--bg-body);
+            color: var(--accent-gold);
+            padding-left: 25px;
+        }
+
+        .menu-toggle {
+            display: none;
+            font-size: 1.3rem;
+            color: var(--text-dark);
+            cursor: pointer;
+        }
+
+        /* HERO SECTION MINIMALISTA */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding-top: 100px;
+        }
+
+        .hero-grid {
+            display: grid;
+            grid-template-columns: 1fr 1.1fr;
+            gap: 70px;
+            align-items: center;
+        }
+
+        .hero-text h1 {
+            font-size: 4.2rem;
+            line-height: 1.05;
+            margin-bottom: 25px;
+            font-weight: 400;
+        }
+
+        .hero-text h1 i {
+            font-family: var(--font-title);
+            font-style: italic;
+            color: var(--accent-gold);
+        }
+
+        .hero-text p {
+            color: var(--text-muted);
+            font-size: 1.05rem;
+            margin-bottom: 40px;
+            max-width: 480px;
+            font-weight: 300;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 15px;
+        }
+
+        .hero-img-wrapper {
+            position: relative;
+            padding: 15px;
+            background: var(--bg-card);
+            box-shadow: var(--shadow-light);
+            border: 1px solid var(--border-soft);
+        }
+
+        .hero-img-wrapper img {
+            width: 100%;
+            height: 550px;
+            object-fit: cover;
+            display: block;
+            filter: brightness(1.02) contrast(0.98);
+        }
+
+        /* SERVICIOS EDITORIALES */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 30px;
+        }
+
+        .service-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-soft);
+            padding: 45px 35px;
+            transition: all 0.4s ease;
+            box-shadow: var(--shadow-light);
+            text-align: center;
+        }
+
+        .service-card:hover {
+            transform: translateY(-8px);
+            border-color: var(--accent-gold);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .service-icon {
+            font-size: 2rem;
+            color: var(--accent-gold);
+            margin-bottom: 25px;
+        }
+
+        .service-card h3 {
+            font-size: 1.6rem;
+            margin-bottom: 15px;
+        }
+
+        .service-card p {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            font-weight: 300;
+        }
+
+        /* PORTAFOLIO EDITORIAL (GRID ASIMÉTRICO) */
+        .portfolio-filter {
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+            margin-bottom: 50px;
+            flex-wrap: wrap;
+        }
+
+        .filter-btn {
+            background: transparent;
+            border: none;
+            color: var(--text-muted);
+            font-family: var(--font-body);
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            cursor: pointer;
+            padding-bottom: 5px;
+            transition: all 0.3s ease;
+            border-bottom: 2px solid transparent;
+        }
+
+        .filter-btn.active, .filter-btn:hover {
+            color: var(--text-dark);
+            border-bottom-color: var(--accent-gold);
+        }
+
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+
+        .portfolio-item {
+            background: var(--bg-card);
+            padding: 12px;
+            border: 1px solid var(--border-soft);
+            box-shadow: var(--shadow-light);
+            transition: all 0.4s ease;
+        }
+
+        .portfolio-item:hover {
+            box-shadow: var(--shadow-hover);
+            transform: translateY(-5px);
+        }
+
+        .portfolio-img-container {
+            overflow: hidden;
+            height: 380px;
+            position: relative;
+        }
+
+        .portfolio-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s ease;
+        }
+
+        .portfolio-item:hover img {
+            transform: scale(1.05);
+        }
+
+        .portfolio-meta {
+            padding: 18px 5px 8px 5px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .portfolio-meta h4 {
+            font-size: 1.3rem;
+        }
+
+        .portfolio-meta span {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: var(--accent-gold);
+        }
+
+        /* SOBRE MI / ESTÉTICA */
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            align-items: center;
+        }
+
+        .about-text h3 {
+            font-size: 2.8rem;
+            line-height: 1.2;
+            margin-bottom: 25px;
+        }
+
+        .about-text p {
+            color: var(--text-muted);
+            margin-bottom: 20px;
+            font-weight: 300;
+        }
+
+        .specs-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 25px;
+            margin-top: 35px;
+        }
+
+        .spec-item {
+            border-left: 2px solid var(--accent-gold);
+            padding-left: 15px;
+        }
+
+        .spec-item h5 {
+            font-size: 1.2rem;
+            margin-bottom: 5px;
+        }
+
+        .spec-item p {
+            font-size: 0.85rem;
+            margin: 0;
+        }
+
+        /* CONTACTO & WHATSAPP DIRECTO */
+        .contact-card-wrapper {
+            max-width: 800px;
+            margin: 0 auto;
+            background: var(--bg-card);
+            border: 1px solid var(--border-soft);
+            box-shadow: var(--shadow-light);
+            padding: 60px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+        }
+
+        .contact-info-side {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            border-right: 1px solid var(--border-soft);
+            padding-right: 40px;
+        }
+
+        .whatsapp-box {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .whatsapp-box i {
+            font-size: 2.5rem;
+            color: #25D366;
+        }
+
+        .whatsapp-box h5 {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: var(--text-muted);
+        }
+
+        .whatsapp-box a {
+            font-family: var(--font-title);
+            font-size: 1.6rem;
+            color: var(--text-dark);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .whatsapp-box a:hover {
+            color: var(--accent-gold);
+        }
+
+        .contact-form-side .form-group {
+            margin-bottom: 20px;
+        }
+
+        .contact-form-side label {
+            display: block;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: var(--text-dark);
+            margin-bottom: 8px;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 12px 15px;
+            background: var(--bg-body);
+            border: 1px solid var(--border-soft);
+            color: var(--text-dark);
+            font-family: var(--font-body);
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: var(--accent-gold);
+            background: #FFFFFF;
+        }
+
+        textarea.form-control {
+            resize: vertical;
+            min-height: 100px;
+        }
+
+        /* FOOTER LUMINOSO */
+        .footer {
+            background: var(--bg-card);
+            border-top: 1px solid var(--border-soft);
+            padding: 45px 0;
+            text-align: center;
+            color: var(--text-muted);
+            font-size: 0.85rem;
+        }
+
+        .footer-socials {
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+            margin-bottom: 20px;
+        }
+
+        .footer-socials a {
+            color: var(--text-dark);
+            font-size: 1.1rem;
+            transition: color 0.3s ease;
+        }
+
+        .footer-socials a:hover {
+            color: var(--accent-gold);
+        }
+
+        /* RESPONSIVE DESIGN */
+        @media (max-width: 992px) {
+            .hero-grid, .about-grid, .contact-card-wrapper {
+                grid-template-columns: 1fr;
+            }
+
+            .contact-info-side {
+                border-right: none;
+                border-bottom: 1px solid var(--border-soft);
+                padding-right: 0;
+                padding-bottom: 30px;
+            }
+
+            .portfolio-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .hero-text h1 {
+                font-size: 3.2rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .menu-toggle {
+                display: block;
+            }
+
+            .nav-menu {
+                position: fixed;
+                top: 75px;
+                right: -100%;
+                width: 280px;
+                height: calc(100vh - 75px);
+                background: var(--bg-card);
+                flex-direction: column;
+                align-items: flex-start;
+                padding: 40px 30px;
+                transition: right 0.3s ease;
+                box-shadow: var(--shadow-light);
+                border-left: 1px solid var(--border-soft);
+            }
+
+            .nav-menu.active {
+                right: 0;
+            }
+
+            .dropdown-menu {
+                position: static;
+                opacity: 1;
+                visibility: visible;
+                transform: none;
+                box-shadow: none;
+                border: none;
+                padding-left: 15px;
+                display: none;
+            }
+
+            .dropdown:hover .dropdown-menu {
+                display: block;
+            }
+
+            .portfolio-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- HEADER NAVIGATION -->
+    <header id="header">
+        <div class="container nav-container">
+            <a href="#" class="logo">
+                SOLIS <span>ESTUDIO</span>
+            </a>
+            
+            <div class="menu-toggle" id="menuToggle">
+                <i class="fa-solid fa-bars"></i>
+            </div>
+
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="#home" class="nav-link">Inicio</a></li>
+                <li class="dropdown">
+                    <a href="#services" class="nav-link">Servicios <i class="fa-solid fa-chevron-down" style="font-size: 0.6rem;"></i></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#services">Editorial Moda</a></li>
+                        <li><a href="#services">Retrato Fine-Art</a></li>
+                        <li><a href="#services">Bodas & Eventos</a></li>
+                        <li><a href="#services">Campañas de Marca</a></li>
+                    </ul>
+                </li>
+                <li><a href="#portfolio" class="nav-link">Galería</a></li>
+                <li><a href="#about" class="nav-link">Estudio</a></li>
+                <li><a href="#contact" class="nav-link">Contacto</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <!-- HERO SECTION -->
+    <section class="hero" id="home">
+        <div class="container hero-grid">
+            <div class="hero-text">
+                <h1>El arte de capturar la <i>elegancia</i> natural.</h1>
+                <p>Estudio de fotografía enfocado en crear imágenes sofisticadas, luminosas e atemporales para proyectos editoriales, marcas y momentos memorables.</p>
+                <div class="hero-buttons">
+                    <a href="#portfolio" class="btn btn-gold">Ver Colecciones</a>
+                    <a href="#contact" class="btn btn-outline">Reservar Cita</a>
+                </div>
+            </div>
+            <div class="hero-img-wrapper">
+                <img src="https://images.unsplash.com/photo-1511285560929-80b456fea0bc?auto=format&fit=crop&w=1000&q=80" alt="Fotografía Elegante Solis Estudio">
+            </div>
+        </div>
+    </section>
+
+    <!-- SERVICES SECTION -->
+    <section class="services" id="services">
+        <div class="container">
+            <div class="section-title">
+                <p>Especializaciones</p>
+                <h2>Nuestros Servicios</h2>
+            </div>
+
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon"><i class="fa-solid fa-gem"></i></div>
+                    <h3>Retrato Fine Art</h3>
+                    <p>Sesiones de estudio o localización con esquema de iluminación suave y estilismo refinado.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon"><i class="fa-solid fa-camera"></i></div>
+                    <h3>Editorial & Moda</h3>
+                    <p>Fotografía técnica para firmas de ropa, looks de temporada y publicaciones digitales.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon"><i class="fa-solid fa-heart"></i></div>
+                    <h3>Bodas de Destino</h3>
+                    <p>Cobertura documental discreta, narrativa elegante y retratos de pareja luminosos.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon"><i class="fa-solid fa-wand-magic-sparkles"></i></div>
+                    <h3>Edición Exclusiva</h3>
+                    <p>Retoque digital de alta gama manteniendo la textura real de la piel y paletas cromáticas neutras.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PORTFOLIO SECTION -->
+    <section class="portfolio" id="portfolio">
+        <div class="container">
+            <div class="section-title">
+                <p>Galería</p>
+                <h2>Obras Seleccionadas</h2>
+            </div>
+
+            <div class="portfolio-filter">
+                <button class="filter-btn active" data-filter="all">Todas</button>
+                <button class="filter-btn" data-filter="editorial">Editorial</button>
+                <button class="filter-btn" data-filter="retratos">Retratos</button>
+                <button class="filter-btn" data-filter="bodas">Bodas</button>
+            </div>
+
+            <div class="portfolio-grid">
+                <div class="portfolio-item" data-category="editorial">
+                    <div class="portfolio-img-container">
+                        <img src="https://images.unsplash.com/photo-1490481651871-ab68de25d43d?auto=format&fit=crop&w=800&q=80" alt="Editorial Moda">
+                    </div>
+                    <div class="portfolio-meta">
+                        <h4>Lumière Collection</h4>
+                        <span>Editorial</span>
+                    </div>
+                </div>
+                <div class="portfolio-item" data-category="retratos">
+                    <div class="portfolio-img-container">
+                        <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=800&q=80" alt="Retrato Femenino">
+                    </div>
+                    <div class="portfolio-meta">
+                        <h4>Esencia Neutra</h4>
+                        <span>Retratos</span>
+                    </div>
+                </div>
+                <div class="portfolio-item" data-category="bodas">
+                    <div class="portfolio-img-container">
+                        <img src="https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=800&q=80" alt="Boda Elegante">
+                    </div>
+                    <div class="portfolio-meta">
+                        <h4>Atardecer Dorado</h4>
+                        <span>Bodas</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ABOUT SECTION -->
+    <section class="about" id="about">
+        <div class="container about-grid">
+            <div class="about-text">
+                <div class="section-title" style="text-align: left; margin-bottom: 20px;">
+                    <p>Filosofía Visual</p>
+                    <h3>Simplicidad, Luz & Sofisticación</h3>
+                </div>
+                <p>En **Solis Estudio** nos alejamos de lo recargado para enfocarnos en la belleza intrínseca de cada sujeto. Creemos que la buena fotografía surge de la combinación perfecta entre la iluminación natural y una visión artística equilibrada.</p>
+                <p>Atendemos proyectos comerciales y personales que buscan destacarse con una estética limpia, moderna y distinguida.</p>
+
+                <div class="specs-container">
+                    <div class="spec-item">
+                        <h5>Luz Suave</h5>
+                        <p>Esquemas de iluminación pensados para resaltar volumen y delicadeza.</p>
+                    </div>
+                    <div class="spec-item">
+                        <h5>Tonalidad Neutra</h5>
+                        <p>Edición atemporal libre de filtros agresivos o modas pasajeras.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="hero-img-wrapper">
+                <img src="https://images.unsplash.com/photo-1513836279014-a89f7a76ae86?auto=format&fit=crop&w=1000&q=80" alt="Estudio de Fotografía Solis Estudio">
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACT SECTION -->
+    <section class="contact" id="contact">
+        <div class="container">
+            <div class="section-title">
+                <p>Reservas & Consultas</p>
+                <h2>Escríbenos</h2>
+            </div>
+
+            <div class="contact-card-wrapper">
+                <div class="contact-info-side">
+                    <h4 style="font-size: 1.8rem; margin-bottom: 15px;">Atención Personalizada</h4>
+                    <p style="color: var(--text-muted); font-size: 0.9rem;">¿Tienes una idea en mente? Puedes enviar tu consulta por el formulario o chatear directamente con nosotros por WhatsApp.</p>
+                    
+                    <div class="whatsapp-box">
+                        <i class="fa-brands fa-whatsapp"></i>
+                        <div>
+                            <h5>Teléfono / WhatsApp</h5>
+                            <a href="https://wa.me/59162617853" target="_blank" rel="noopener noreferrer">+591 62617853</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="contact-form-side">
+                    <form onsubmit="event.preventDefault();">
+                        <div class="form-group">
+                            <label for="name">Nombre</label>
+                            <input type="text" id="name" class="form-control" placeholder="Tu nombre">
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" class="form-control" placeholder="tu@email.com">
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Mensaje</label>
+                            <textarea id="message" class="form-control" placeholder="Detalles de la sesión..."></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-gold" style="width: 100%; justify-content: center;">Enviar Mensaje</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-socials">
+                <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                <a href="#"><i class="fa-brands fa-pinterest"></i></a>
+                <a href="#"><i class="fa-brands fa-behance"></i></a>
+            </div>
+            <p>&copy; 2026 Solis Estudio. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <!-- JAVASCRIPT -->
+    <script>
+        // Header efecto Scroll
+        window.addEventListener('scroll', () => {
+            const header = document.getElementById('header');
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+
+        // Toggle Menú Móvil
+        const menuToggle = document.getElementById('menuToggle');
+        const navMenu = document.getElementById('navMenu');
+
+        menuToggle.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+        });
+
+        // Filtro de Galería
+        const filterBtns = document.querySelectorAll('.filter-btn');
+        const portfolioItems = document.querySelectorAll('.portfolio-item');
+
+        filterBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                filterBtns.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+
+                const filterValue = btn.getAttribute('data-filter');
+
+                portfolioItems.forEach(item => {
+                    if (filterValue === 'all' || item.getAttribute('data-category') === filterValue) {
+                        item.style.display = 'block';
+                    } else {
+                        item.style.display = 'none';
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
