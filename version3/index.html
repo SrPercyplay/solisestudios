@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Solis Estudio | Versión 3 (Luz Natural & Editorial)</title>
+    <title>Solis Estudio | Luz Natural & Editorial</title>
 
     <!-- Favicon -->
     <link rel="icon" type="image/png" href="/Logo%20Estudio.png">
@@ -19,12 +19,13 @@
             padding: 0;
             box-sizing: border-box;
             font-family: 'Montserrat', sans-serif;
+            scroll-behavior: smooth;
         }
 
         body {
             background-color: #fcfbf9;
             background-image: 
-                linear-gradient(135deg, rgba(253, 252, 250, 0.85) 0%, rgba(245, 240, 235, 0.65) 100%),
+                linear-gradient(135deg, rgba(253, 252, 250, 0.88) 0%, rgba(245, 240, 235, 0.70) 100%),
                 url('/Solis%20Estudio.png');
             background-size: cover;
             background-position: center center;
@@ -32,22 +33,24 @@
             background-attachment: fixed;
             color: #2b2b2b;
             min-height: 100vh;
+            padding: 30px 20px;
+        }
+
+        /* Contenedor Flex para la vista inicial */
+        .hero-screen {
+            min-height: calc(100vh - 60px);
             display: flex;
             flex-direction: column;
             justify-content: space-between;
-            padding: 30px;
         }
 
-        /* 1. Header en Píldora Flotante Centrada */
+        /* Header en Píldora Flotante (Solo Marca/Logo) */
         header {
             align-self: center;
-            background-color: rgba(255, 255, 255, 0.85);
-            border: 1px solid rgba(212, 175, 55, 0.3);
+            background-color: rgba(255, 255, 255, 0.9);
+            border: 1px solid rgba(212, 175, 55, 0.35);
             border-radius: 50px;
-            padding: 12px 35px;
-            display: flex;
-            align-items: center;
-            gap: 40px;
+            padding: 12px 40px;
             backdrop-filter: blur(12px);
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04);
             z-index: 1000;
@@ -57,45 +60,25 @@
             font-size: 1.1rem;
             font-weight: 600;
             color: #b89726; /* Dorado Champagne */
-            letter-spacing: 4px;
+            letter-spacing: 5px;
             text-transform: uppercase;
         }
 
-        nav {
-            display: flex;
-            gap: 20px;
-        }
-
-        nav a {
-            color: #555555;
-            text-decoration: none;
-            font-size: 0.82rem;
-            font-weight: 500;
-            letter-spacing: 1.5px;
-            text-transform: uppercase;
-            transition: color 0.3s ease;
-        }
-
-        nav a:hover, nav a.active {
-            color: #b89726;
-        }
-
-        /* 2. Área Libre Central que Permite Apreciar la Ilustración */
         .editorial-viewport {
             flex-grow: 1;
         }
 
-        /* 3. Panel Editorial Flotante Inferior (Ubicado en la esquina) */
+        /* Tarjeta Principal Inferior */
         .editorial-card {
-            max-width: 480px;
-            background-color: rgba(255, 255, 255, 0.9);
+            max-width: 520px;
+            background-color: rgba(255, 255, 255, 0.92);
             border: 1px solid rgba(212, 175, 55, 0.35);
             border-radius: 16px;
-            padding: 30px 35px;
+            padding: 35px;
             backdrop-filter: blur(10px);
             box-shadow: 0 15px 35px rgba(0, 0, 0, 0.06);
             align-self: flex-start;
-            margin-top: 20px;
+            margin-bottom: 40px;
         }
 
         .editorial-card .badge {
@@ -111,7 +94,7 @@
         }
 
         .editorial-card h1 {
-            font-size: 1.6rem;
+            font-size: 1.7rem;
             font-weight: 300;
             color: #1a1a1a;
             letter-spacing: 2px;
@@ -120,24 +103,23 @@
         }
 
         .editorial-card .subtitle {
-            font-size: 0.88rem;
+            font-size: 0.9rem;
             font-style: italic;
             color: #777777;
             margin-bottom: 16px;
         }
 
         .editorial-card p {
-            font-size: 0.85rem;
+            font-size: 0.88rem;
             line-height: 1.7;
             color: #4a4a4a;
             font-weight: 300;
-            margin-bottom: 22px;
+            margin-bottom: 24px;
         }
 
-        /* Botón Estilo Editorial Elegante */
         .btn-editorial {
             display: inline-block;
-            padding: 10px 24px;
+            padding: 12px 28px;
             background-color: #b89726;
             color: #ffffff;
             text-decoration: none;
@@ -153,54 +135,134 @@
         .btn-editorial:hover {
             background-color: #1a1a1a;
             color: #ffffff;
-            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15);
             transform: translateY(-2px);
+        }
+
+        /* --- NUEVAS SECCIONES INTEGRADAS --- */
+        .content-container {
+            max-width: 900px;
+            margin: 60px auto 40px auto;
+            display: flex;
+            flex-direction: column;
+            gap: 50px;
+        }
+
+        .section-box {
+            background-color: rgba(255, 255, 255, 0.92);
+            border: 1px solid rgba(212, 175, 55, 0.35);
+            border-radius: 16px;
+            padding: 40px;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.05);
+        }
+
+        .section-title {
+            font-size: 1.3rem;
+            font-weight: 500;
+            color: #b89726;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+            border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+            padding-bottom: 10px;
+        }
+
+        /* Lista de Servicios */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 20px;
+        }
+
+        .service-item h3 {
+            font-size: 1rem;
+            font-weight: 600;
+            color: #1a1a1a;
+            margin-bottom: 8px;
+        }
+
+        .service-item p {
+            font-size: 0.85rem;
+            line-height: 1.6;
+            color: #555555;
+            font-weight: 300;
+        }
+
+        /* Sección de Contacto */
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            font-size: 0.9rem;
+            color: #4a4a4a;
+            font-weight: 300;
+        }
+
+        .contact-info strong {
+            color: #1a1a1a;
+            font-weight: 500;
         }
 
         /* Adaptabilidad Móvil */
         @media (max-width: 768px) {
-            body {
-                padding: 15px;
-            }
-
-            header {
-                flex-direction: column;
-                gap: 12px;
-                border-radius: 20px;
-                width: 100%;
-                padding: 15px;
-            }
-
-            .editorial-card {
-                max-width: 100%;
-                align-self: center;
-            }
+            body { padding: 15px; }
+            .editorial-card, .section-box { padding: 25px; }
         }
     </style>
 </head>
 <body>
 
-    <!-- Navegación Flotante Estilo Píldora -->
-    <header>
-        <div class="logo">SOLIS ESTUDIO</div>
-        <nav>
-            <a href="/" class="active">Inicio</a>
-            <a href="/servicios/">Servicios</a>
-            <a href="/contacto/">Contacto</a>
-        </nav>
-    </header>
+    <!-- Pantalla Principal / Hero -->
+    <div class="hero-screen">
+        <header>
+            <div class="logo">SOLIS ESTUDIO</div>
+        </header>
 
-    <!-- Espacio Visor Central Libre -->
-    <div class="editorial-viewport"></div>
+        <div class="editorial-viewport"></div>
 
-    <!-- Tarjeta Inferior de Estilo Editorial -->
-    <main class="editorial-card">
-        <span class="badge">Luz Natural & Retrato</span>
-        <h1>Percy Solis</h1>
-        <div class="subtitle">Una fotografía, un recuerdo</div>
-        <p>Fotógrafo y editor profesional formado en Lino Fotografía. Especializado en capturar momentos auténticos, bodas y narrativa visual con estética de luz natural.</p>
-        <a href="/servicios/" class="btn-editorial">Descubrir Servicios</a>
-    </main>
+        <main class="editorial-card">
+            <span class="badge">Luz Natural & Retrato</span>
+            <h1>Percy Solis</h1>
+            <div class="subtitle">Una fotografía, un recuerdo</div>
+            <p>Fotógrafo y editor profesional formado en Lino Fotografía. Especializado en capturar momentos auténticos, eventos y narrativa visual con estética de luz natural.</p>
+            <a href="#servicios" class="btn-editorial">Ver Servicios y Contacto</a>
+        </main>
+    </div>
+
+    <!-- Contenido Integrado (Servicios & Contacto) -->
+    <div class="content-container">
+        
+        <!-- Sección Servicios -->
+        <section id="servicios" class="section-box">
+            <h2 class="section-title">Servicios Profesional</h2>
+            <div class="services-grid">
+                <div class="service-item">
+                    <h3>Fotografía Social & Eventos</h3>
+                    <p>Cobertura completa para bodas, retratos y celebraciones especiales con enfoque de luz natural.</p>
+                </div>
+                <div class="service-item">
+                    <h3>Edición & Retoque Digital</h3>
+                    <p>Procesamiento fino de color, corrección tonal y revelado digital de alta calidad.</p>
+                </div>
+                <div class="service-item">
+                    <h3>Sesiones Personalizadas</h3>
+                    <p>Sesiones en exterior o estudio diseñadas a medida según la narrativa del cliente.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Sección Contacto -->
+        <section id="contacto" class="section-box">
+            <h2 class="section-title">Contacto</h2>
+            <div class="contact-info">
+                <p><strong>Fotógrafo:</strong> Percy Solis</p>
+                <p><strong>Formación:</strong> Lino Fotografía</p>
+                <p><strong>Especialidad:</strong> Fotografía y Edición Digital</p>
+                <p><strong>Ubicación:</strong> Disponible para proyectos locales y eventos.</p>
+            </div>
+        </section>
+
+    </div>
 
 </body>
 </html>
