@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Solis Estudio | Versión 2 (Cuarto Oscuro)</title>
+    <title>Solis Estudio | Cuarto Oscuro & Revelado</title>
 
     <!-- Favicon -->
     <link rel="icon" type="image/png" href="/Logo%20Estudio.png">
@@ -19,12 +19,13 @@
             padding: 0;
             box-sizing: border-box;
             font-family: 'Montserrat', sans-serif;
+            scroll-behavior: smooth;
         }
 
         body {
             background-color: #080808;
             background-image: 
-                radial-gradient(circle at 75% 50%, rgba(180, 0, 0, 0.25) 0%, rgba(8, 8, 8, 0.95) 75%),
+                radial-gradient(circle at 75% 30%, rgba(180, 0, 0, 0.25) 0%, rgba(8, 8, 8, 0.95) 75%),
                 url('/Solis%20Estudio.png');
             background-size: cover;
             background-position: center right;
@@ -32,21 +33,22 @@
             background-attachment: fixed;
             color: #e0e0e0;
             min-height: 100vh;
-            display: flex;
         }
 
-        /* Contenedor Principal en Disposición Dividida (Split Layout) */
-        .app-container {
+        .app-layout {
             display: flex;
-            width: 100%;
             min-height: 100vh;
         }
 
-        /* Panel Lateral Izquierdo (Sustituye la barra superior tradicional) */
+        /* Panel Lateral Izquierdo Fijo */
         .sidebar-panel {
             width: 420px;
             max-width: 90vw;
-            background-color: rgba(12, 10, 10, 0.82);
+            height: 100vh;
+            position: fixed;
+            top: 0;
+            left: 0;
+            background-color: rgba(12, 10, 10, 0.88);
             border-right: 1px solid rgba(255, 42, 42, 0.3);
             backdrop-filter: blur(12px);
             padding: 50px 40px;
@@ -54,10 +56,10 @@
             flex-direction: column;
             justify-content: space-between;
             box-shadow: 10px 0 30px rgba(0, 0, 0, 0.8);
-            z-index: 10;
+            z-index: 100;
         }
 
-        /* Logo en el Panel Lateral */
+        /* Encabezado del Panel */
         .brand-header .logo {
             font-size: 1.5rem;
             font-weight: 300;
@@ -76,7 +78,7 @@
             font-weight: 500;
         }
 
-        /* Menú Vertical */
+        /* Menú Interno tipo Scroll */
         .nav-vertical {
             display: flex;
             flex-direction: column;
@@ -87,7 +89,7 @@
         .nav-vertical a {
             color: #a0a0a0;
             text-decoration: none;
-            font-size: 1rem;
+            font-size: 0.95rem;
             font-weight: 500;
             letter-spacing: 2px;
             text-transform: uppercase;
@@ -101,26 +103,25 @@
             content: '//';
             color: rgba(255, 42, 42, 0.4);
             font-size: 0.8rem;
-            transition: color 0.3s ease;
         }
 
-        .nav-vertical a:hover, .nav-vertical a.active {
+        .nav-vertical a:hover {
             color: #ffffff;
             padding-left: 8px;
         }
 
-        .nav-vertical a:hover::before, .nav-vertical a.active::before {
+        .nav-vertical a:hover::before {
             color: #ff2a2a;
         }
 
-        /* Tarjeta Biografía Integrada en el Panel */
-        .bio-card {
+        /* Resumen Biográfico */
+        .bio-summary {
             border-left: 2px solid #ff2a2a;
             padding-left: 18px;
-            margin-bottom: 30px;
+            margin-bottom: 20px;
         }
 
-        .bio-card h2 {
+        .bio-summary h2 {
             font-size: 1.1rem;
             color: #ff2a2a;
             letter-spacing: 3px;
@@ -128,49 +129,33 @@
             margin-bottom: 8px;
         }
 
-        .bio-card p {
+        .bio-summary p {
             font-size: 0.85rem;
             line-height: 1.6;
             color: #cccccc;
             font-weight: 300;
         }
 
-        /* Botón de Acción */
-        .btn-cta {
-            display: inline-block;
-            text-align: center;
-            padding: 14px 28px;
-            border: 1px solid #ff2a2a;
-            background-color: rgba(255, 42, 42, 0.15);
-            color: #ffffff;
-            text-decoration: none;
-            font-size: 0.8rem;
-            font-weight: 500;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            border-radius: 4px;
-            transition: all 0.3s ease;
-        }
-
-        .btn-cta:hover {
-            background-color: #ff2a2a;
-            color: #080808;
-            box-shadow: 0 0 20px rgba(255, 42, 42, 0.7);
-        }
-
-        /* Visor de Arte a la Derecha */
-        .main-viewport {
+        /* Área de Contenido Principal (Desplazable a la derecha) */
+        .main-content {
+            margin-left: 420px;
             flex: 1;
+            padding: 50px 60px;
+            display: flex;
+            flex-direction: column;
+            gap: 80px;
+        }
+
+        /* Visor Técnico Superior */
+        .hero-viewport {
+            min-height: 60vh;
             display: flex;
             align-items: flex-end;
             justify-content: flex-end;
-            padding: 40px;
-            position: relative;
         }
 
-        /* Indicador Técnico Estilo Cuarto Oscuro */
         .tech-tag {
-            background-color: rgba(8, 8, 8, 0.7);
+            background-color: rgba(8, 8, 8, 0.75);
             border: 1px solid rgba(255, 176, 0, 0.4);
             color: #ffb000;
             padding: 8px 16px;
@@ -181,27 +166,91 @@
             border-radius: 3px;
         }
 
-        /* Adaptación para pantallas móviles */
-        @media (max-width: 768px) {
-            .app-container {
+        /* Cajas de Contenido Darkroom */
+        .section-block {
+            max-width: 750px;
+            background-color: rgba(12, 10, 10, 0.85);
+            border: 1px solid rgba(255, 42, 42, 0.3);
+            border-radius: 8px;
+            padding: 40px;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 0 25px rgba(180, 0, 0, 0.15);
+        }
+
+        .section-title {
+            font-size: 1.2rem;
+            color: #ff2a2a;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            margin-bottom: 25px;
+            border-bottom: 1px solid rgba(255, 42, 42, 0.2);
+            padding-bottom: 10px;
+            text-shadow: 0 0 8px rgba(255, 42, 42, 0.4);
+        }
+
+        /* Grilla de Servicios */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 25px;
+        }
+
+        .service-card h3 {
+            font-size: 0.95rem;
+            color: #ffb000;
+            margin-bottom: 8px;
+            letter-spacing: 1px;
+        }
+
+        .service-card p {
+            font-size: 0.85rem;
+            line-height: 1.6;
+            color: #a0a0a0;
+            font-weight: 300;
+        }
+
+        /* Datos de Contacto */
+        .contact-details {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            font-size: 0.9rem;
+            color: #cccccc;
+            font-weight: 300;
+        }
+
+        .contact-details strong {
+            color: #ff2a2a;
+            font-weight: 500;
+        }
+
+        /* Responsive Móvil */
+        @media (max-width: 900px) {
+            .app-layout {
                 flex-direction: column;
             }
             .sidebar-panel {
                 width: 100%;
                 max-width: 100%;
+                height: auto;
+                position: relative;
                 border-right: none;
                 border-bottom: 1px solid rgba(255, 42, 42, 0.3);
             }
-            .main-viewport {
-                min-height: 300px;
+            .main-content {
+                margin-left: 0;
+                padding: 30px 20px;
+            }
+            .hero-viewport {
+                min-height: 250px;
             }
         }
     </style>
 </head>
 <body>
 
-    <div class="app-container">
-        <!-- Panel Lateral de Navegación y Contenido -->
+    <div class="app-layout">
+        <!-- Panel Lateral Fijo de Identificación y Menú -->
         <aside class="sidebar-panel">
             <div class="brand-header">
                 <div class="logo">Solis Estudio</div>
@@ -209,22 +258,55 @@
             </div>
 
             <nav class="nav-vertical">
-                <a href="/" class="active">Inicio</a>
-                <a href="/servicios/">Servicios</a>
-                <a href="/contacto/">Contacto</a>
+                <a href="#inicio">01. Inicio</a>
+                <a href="#servicios">02. Servicios</a>
+                <a href="#contacto">03. Contacto</a>
             </nav>
 
-            <div class="bio-card">
+            <div class="bio-summary">
                 <h2>Percy Solis</h2>
                 <p>Fotógrafo y editor profesional formado en Lino Fotografía. Especializado en captura analógica, retoque digital y composición estética.</p>
             </div>
-
-            <a href="/servicios/" class="btn-cta">Ver Servicios</a>
         </aside>
 
-        <!-- Visor Despejado que Muestra la Ilustración de Fondo -->
-        <main class="main-viewport">
-            <div class="tech-tag">DARKROOM // ANALOG PROCESS</div>
+        <!-- Contenido Desplazable Principal -->
+        <main class="main-content">
+            
+            <!-- Vista Libre para Apreciar el Arte / Logo -->
+            <section id="inicio" class="hero-viewport">
+                <div class="tech-tag">DARKROOM // ANALOG PROCESS</div>
+            </section>
+
+            <!-- Sección Servicios -->
+            <section id="servicios" class="section-block">
+                <h2 class="section-title">Servicios de Fotografía</h2>
+                <div class="services-grid">
+                    <div class="service-card">
+                        <h3>Fotografía Analógica & Digital</h3>
+                        <p>Cobertura especializada con estética técnica, captura cuidadosa de momentos y revelado conceptual.</p>
+                    </div>
+                    <div class="service-card">
+                        <h3>Edición y Edición de Color</h3>
+                        <p>Post-procesamiento avanzado de color, balance tonal profundo y retoque para acabado profesional.</p>
+                    </div>
+                    <div class="service-card">
+                        <h3>Proyectos de Autor</h3>
+                        <p>Sesiones conceptuales y retratos dirigidos en estudio o locación externa.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Sección Contacto -->
+            <section id="contacto" class="section-block">
+                <h2 class="section-title">Información de Contacto</h2>
+                <div class="contact-details">
+                    <p><strong>Fotógrafo:</strong> Percy Solis</p>
+                    <p><strong>Escuela / Formación:</strong> Lino Fotografía</p>
+                    <p><strong>Especialidad:</strong> Fotografía y Edición Digital</p>
+                    <p><strong>Disponibilidad:</strong> Sesiones personalizadas y eventos de autor.</p>
+                </div>
+            </section>
+
         </main>
     </div>
 
