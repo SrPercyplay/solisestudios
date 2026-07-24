@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Solis Studio | Fotografía Editorial & Documental</title>
+    <title>Solis Estudio | Fotografía Editorial & Documental</title>
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -89,6 +89,29 @@
             color: var(--bg-primary);
         }
 
+        /* Botón de WhatsApp especial */
+        .btn-whatsapp {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.8rem;
+            padding: 1rem 2rem;
+            border: 1px solid #25D366;
+            color: #25D366;
+            font-family: var(--font-body);
+            font-size: 0.85rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            font-weight: 600;
+            transition: var(--transition);
+            border-radius: 4px;
+        }
+
+        .btn-whatsapp:hover {
+            background: #25D366;
+            color: #000;
+            box-shadow: 0 10px 20px rgba(37, 211, 102, 0.2);
+        }
+
         /* Titulares */
         .section-header {
             margin-bottom: 4rem;
@@ -135,8 +158,8 @@
         .brand-logo {
             font-family: var(--font-head);
             font-size: 1.6rem;
-            letter-spacing: 2px;
-            font-style: italic;
+            letter-spacing: 1px;
+            font-style: normal;
         }
 
         .nav-links {
@@ -165,7 +188,7 @@
             color: var(--text-main);
         }
 
-        /* Menú desplegable elegante */
+        /* Menú desplegable */
         .dropdown {
             position: absolute;
             top: 100%;
@@ -209,7 +232,7 @@
         }
 
         /* ==========================================
-           HERO SECTION (PORTADA EDITORIAL)
+           HERO SECTION
         ========================================== */
         .hero {
             height: 100vh;
@@ -264,7 +287,7 @@
         }
 
         /* ==========================================
-           GALERÍA Y PORTAFOLIO (FILTRABLE)
+           GALERÍA Y PORTAFOLIO
         ========================================== */
         .gallery-section {
             padding: 10rem 0;
@@ -307,7 +330,6 @@
             background: var(--accent-gold);
         }
 
-        /* Grid Asimétrico tipo Galería de Arte */
         .gallery-grid {
             display: grid;
             grid-template-columns: repeat(12, 1fr);
@@ -358,7 +380,6 @@
             color: var(--accent-gold);
         }
 
-        /* Layout personalizado para el Grid */
         .gi-1 { grid-column: span 8; height: 500px; }
         .gi-2 { grid-column: span 4; height: 500px; }
         .gi-3 { grid-column: span 4; height: 600px; }
@@ -466,12 +487,7 @@
             letter-spacing: 3px;
             text-transform: uppercase;
             color: var(--accent-gold);
-            margin-bottom: 0.5rem;
-        }
-
-        .detail-item p {
-            font-family: var(--font-head);
-            font-size: 1.5rem;
+            margin-bottom: 1rem;
         }
 
         .minimal-form .form-group {
@@ -595,7 +611,7 @@
     <!-- NAVEGACIÓN -->
     <header class="navbar">
         <div class="container nav-container">
-            <a href="#" class="brand-logo">SOLIS.</a>
+            <a href="#" class="brand-logo">Solis Estudio</a>
 
             <div class="mobile-toggle" id="mobileToggle">
                 <i class="fa-solid fa-bars"></i>
@@ -658,7 +674,6 @@
                 <h2 class="section-title">Obras Recientes</h2>
             </div>
 
-            <!-- Filtros de Galería -->
             <div class="gallery-nav">
                 <button class="filter-btn active" data-filter="all">Todas</button>
                 <button class="filter-btn" data-filter="editorial">Editorial</button>
@@ -666,7 +681,6 @@
                 <button class="filter-btn" data-filter="arquitectura">Arquitectura</button>
             </div>
 
-            <!-- Grid de Galería -->
             <div class="gallery-grid">
                 <div class="gallery-item gi-1" data-category="editorial">
                     <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=1200&q=80" alt="Editorial Vogue">
@@ -772,16 +786,10 @@
 
                     <div class="contact-details">
                         <div class="detail-item">
-                            <h5>Estudio</h5>
-                            <p>Calle Principal 405, Madrid / Lima</p>
-                        </div>
-                        <div class="detail-item">
-                            <h5>Directo</h5>
-                            <p>hola@solis-studio.com</p>
-                        </div>
-                        <div class="detail-item">
-                            <h5>Teléfono</h5>
-                            <p>+34 600 000 000</p>
+                            <h5>Atención Directa</h5>
+                            <a href="https://wa.me/59162617853" target="_blank" class="btn-whatsapp">
+                                <i class="fa-brands fa-whatsapp" style="font-size: 1.2rem;"></i> +591 62617853
+                            </a>
                         </div>
                     </div>
                 </div>
@@ -814,7 +822,7 @@
     <!-- FOOTER -->
     <footer class="footer">
         <div class="container footer-container">
-            <p>&copy; 2026 SOLIS STUDIO. Todos los derechos reservados.</p>
+            <p>&copy; 2026 SOLIS ESTUDIO. Todos los derechos reservados.</p>
             <div class="footer-socials">
                 <a href="#">Instagram</a>
                 <a href="#">Behance</a>
