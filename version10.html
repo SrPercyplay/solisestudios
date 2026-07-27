@@ -329,7 +329,7 @@
         }
 
         /* =========================================
-           SERVICIOS (Diales de Disparo)
+           SERVICIOS / ESPECIALIDADES (Fotografía & Edición)
            ========================================= */
         .section-header {
             margin-bottom: 70px;
@@ -352,8 +352,10 @@
 
         .services-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
             gap: 30px;
+            max-width: 900px;
+            margin: 0 auto;
         }
 
         .dial-card {
@@ -425,7 +427,7 @@
         .portfolio-item {
             position: relative;
             background: #000;
-            border: 1fr solid var(--cam-border);
+            border: 1px solid var(--cam-border);
             border-radius: 4px;
             overflow: hidden;
             aspect-ratio: 4/3;
@@ -631,7 +633,7 @@
             </a>
             
             <ul class="nav-menu">
-                <li><a href="#servicios" class="nav-link">Servicios</a></li>
+                <li><a href="#servicios" class="nav-link">Especialidades</a></li>
                 <li><a href="#portafolio" class="nav-link">Portafolio</a></li>
                 <li><a href="#specs" class="nav-link">Especificaciones</a></li>
                 <li><a href="#contacto" class="nav-link">Contacto</a></li>
@@ -650,7 +652,7 @@
             <div class="hero-grid">
                 <div class="hero-text">
                     <h1>PRECISIÓN ÓPTICA Y <span>NARRATIVA</span> VISUAL</h1>
-                    <p>Captura de alto impacto, producción cinematográfica y desarrollo de contenido visual optimizado con estándares de grado profesional.</p>
+                    <p>Captura de alto impacto, producción fotográfica y procesamiento digital optimizado con estándares de grado profesional.</p>
                     <a href="#contacto" class="btn-cam">
                         <i class="fa-solid fa-aperture"></i> Iniciar Proyecto
                     </a>
@@ -665,31 +667,25 @@
         </div>
     </section>
 
-    <!-- SERVICIOS -->
+    <!-- ESPECIALIDADES -->
     <section id="servicios">
         <div class="container">
             <div class="section-header">
-                <p>[ Modo de Operación ]</p>
+                <p>[ Especialidades del Estudio ]</p>
                 <h2>SERVICIOS DE PRODUCCIÓN</h2>
             </div>
             
             <div class="services-grid">
                 <div class="dial-card">
                     <div class="dial-badge"><i class="fa-solid fa-camera"></i></div>
-                    <h3>Fotografía Editorial</h3>
-                    <p>Cobertura técnica con gestión de color calibrada, ideal para publicaciones, moda y retratos corporativos de alto perfil.</p>
+                    <h3>Fotografía</h3>
+                    <p>Cobertura técnica con gestión de color calibrada, ideal para publicaciones, campañas publicitarias, moda y retratos profesionales.</p>
                 </div>
                 
                 <div class="dial-card">
-                    <div class="dial-badge"><i class="fa-solid fa-video"></i></div>
-                    <h3>Cinematografía 4K</h3>
-                    <p>Registros en perfil logarítmico de alto rango dinámico (LOG), corrección cromática avanzada y entrega multi-plataforma.</p>
-                </div>
-                
-                <div class="dial-card">
-                    <div class="dial-badge"><i class="fa-solid fa-layer-group"></i></div>
-                    <h3>Post-producción</h3>
-                    <p>Retoque digital no destructivo, flujo de trabajo RAW y composición para estándares de impresión y pantalla.</p>
+                    <div class="dial-badge"><i class="fa-solid fa-sliders"></i></div>
+                    <h3>Edición Digital</h3>
+                    <p>Retoque fotográfico avanzado, revelado RAW no destructivo, corrección cromática y composición de alto nivel visual.</p>
                 </div>
             </div>
         </div>
@@ -753,7 +749,7 @@
         </div>
     </section>
 
-    <!-- CONTACTO -->
+    <!-- CONTACTO REDIRIGIDO A WHATSAPP -->
     <section id="contacto">
         <div class="container">
             <div class="section-header">
@@ -762,21 +758,17 @@
             </div>
 
             <div class="contact-container">
-                <form action="#" method="POST" onsubmit="event.preventDefault();">
+                <form id="whatsapp-form" onsubmit="enviarWhatsApp(event)">
                     <div class="form-group">
                         <label for="nombre">Nombre / Firma</label>
                         <input type="text" id="nombre" class="form-control" placeholder="Ej. Carlos Mendoza" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="email">Correo Electrónico</label>
-                        <input type="email" id="email" class="form-control" placeholder="nombre@dominio.com" required>
                     </div>
                     <div class="form-group">
                         <label for="mensaje">Detalles del Proyecto</label>
                         <textarea id="mensaje" class="form-control" placeholder="Describa el alcance, fechas estimadas y requerimientos técnicos..." required></textarea>
                     </div>
                     <button type="submit" class="btn-cam" style="width: 100%; justify-content: center;">
-                        <i class="fa-solid fa-paper-plane"></i> Enviar Parámetros
+                        <i class="fa-brands fa-whatsapp"></i> Enviar por WhatsApp
                     </button>
                 </form>
             </div>
@@ -795,5 +787,22 @@
         </div>
     </footer>
 
+    <!-- SCRIPT PARA WHATSAPP -->
+    <script>
+        function enviarWhatsApp(event) {
+            event.preventDefault();
+            
+            // Reemplaza con tu número de WhatsApp con código de país (sin el signo +)
+            const numeroWhatsapp = "1234567890"; 
+            
+            const nombre = document.getElementById('nombre').value;
+            const mensaje = document.getElementById('mensaje').value;
+            
+            const textoMensaje = `Hola, mi nombre es *${nombre}*.\n\n*Detalles del proyecto:*\n${mensaje}`;
+            const url = `https://wa.me/${numeroWhatsapp}?text=${encodeURIComponent(textoMensaje)}`;
+            
+            window.open(url, '_blank');
+        }
+    </script>
 </body>
 </html>
