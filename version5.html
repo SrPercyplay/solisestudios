@@ -72,6 +72,7 @@
             background: transparent;
             color: var(--text-main);
             position: relative;
+            text-align: center;
         }
 
         .btn:hover {
@@ -89,10 +90,11 @@
             color: var(--bg-primary);
         }
 
-        /* Botón de WhatsApp especial */
+        /* Botón de WhatsApp */
         .btn-whatsapp {
             display: inline-flex;
             align-items: center;
+            justify-content: center;
             gap: 0.8rem;
             padding: 1rem 2rem;
             border: 1px solid #25D366;
@@ -104,6 +106,7 @@
             font-weight: 600;
             transition: var(--transition);
             border-radius: 4px;
+            width: fit-content;
         }
 
         .btn-whatsapp:hover {
@@ -134,7 +137,7 @@
         }
 
         /* ==========================================
-           NAVEGACIÓN (MENÚS DESPLEGABLES)
+           NAVEGACIÓN
         ========================================== */
         .navbar {
             position: fixed;
@@ -142,7 +145,7 @@
             left: 0;
             width: 100%;
             z-index: 1000;
-            background: rgba(10, 10, 10, 0.85);
+            background: rgba(10, 10, 10, 0.95);
             backdrop-filter: blur(10px);
             border-bottom: 1px solid rgba(255, 255, 255, 0.05);
             transition: var(--transition);
@@ -152,7 +155,7 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            height: 100px;
+            height: 80px;
         }
 
         .brand-logo {
@@ -188,7 +191,7 @@
             color: var(--text-main);
         }
 
-        /* Menú desplegable */
+        /* Menú desplegable Desktop */
         .dropdown {
             position: absolute;
             top: 100%;
@@ -227,19 +230,21 @@
 
         .mobile-toggle {
             display: none;
-            font-size: 1.2rem;
+            font-size: 1.4rem;
             cursor: pointer;
+            color: var(--text-main);
         }
 
         /* ==========================================
            HERO SECTION
         ========================================== */
         .hero {
-            height: 100vh;
+            min-height: 100vh;
             display: flex;
             align-items: center;
             position: relative;
             padding-top: 100px;
+            padding-bottom: 4rem;
         }
 
         .hero-grid {
@@ -276,7 +281,7 @@
 
         .hero-image img {
             width: 100%;
-            height: 80vh;
+            height: 75vh;
             object-fit: cover;
             filter: grayscale(100%);
             transition: var(--transition);
@@ -290,16 +295,18 @@
            GALERÍA Y PORTAFOLIO
         ========================================== */
         .gallery-section {
-            padding: 10rem 0;
+            padding: 8rem 0;
             background: var(--bg-secondary);
         }
 
         .gallery-nav {
             display: flex;
             gap: 2rem;
-            margin-bottom: 4rem;
+            margin-bottom: 3rem;
             border-bottom: 1px solid var(--accent-border);
             padding-bottom: 1rem;
+            overflow-x: auto;
+            white-space: nowrap;
         }
 
         .filter-btn {
@@ -389,7 +396,7 @@
            SERVICIOS EDITORIALES
         ========================================== */
         .services-section {
-            padding: 10rem 0;
+            padding: 8rem 0;
         }
 
         .services-list {
@@ -436,7 +443,7 @@
            ACERCA DE / SOBRE EL AUTOR
         ========================================== */
         .about-section {
-            padding: 10rem 0;
+            padding: 8rem 0;
             background: var(--bg-secondary);
         }
 
@@ -467,7 +474,7 @@
            CONTACTO & RESERVAS
         ========================================== */
         .contact-section {
-            padding: 10rem 0;
+            padding: 8rem 0;
         }
 
         .contact-grid {
@@ -554,54 +561,201 @@
         }
 
         /* ==========================================
-           RESPONSIVE
+           ADAPTACIÓN COMPLETA A MÓVILES (RESPONSIVE)
         ========================================== */
         @media (max-width: 992px) {
-            .hero-grid, .about-grid, .contact-grid {
-                grid-template-columns: 1fr;
+            .container {
+                padding: 0 1.5rem;
             }
-            .gi-1, .gi-2, .gi-3, .gi-4 {
-                grid-column: span 12;
-                height: 400px;
+
+            .section-header {
+                margin-bottom: 2.5rem;
             }
-            .service-row {
-                grid-template-columns: 1fr;
-                gap: 1rem;
+
+            .section-title {
+                font-size: 2.2rem;
             }
-            .service-action {
-                text-align: left;
+
+            /* Navegación Móvil */
+            .nav-container {
+                height: 70px;
             }
+
             .mobile-toggle {
                 display: block;
             }
+
             .nav-links {
                 position: fixed;
-                top: 100px;
+                top: 70px;
                 left: -100%;
                 width: 100%;
-                height: calc(100vh - 100px);
+                height: calc(100vh - 70px);
                 background: var(--bg-primary);
                 flex-direction: column;
                 align-items: flex-start;
-                padding: 3rem;
+                padding: 2rem 1.5rem;
+                gap: 0;
+                overflow-y: auto;
                 transition: var(--transition);
             }
+
             .nav-links.active {
                 left: 0;
             }
+
+            .nav-item {
+                width: 100%;
+                border-bottom: 1px solid var(--accent-border);
+            }
+
+            .nav-link {
+                width: 100%;
+                justify-content: space-between;
+                padding: 1.2rem 0;
+                font-size: 0.85rem;
+            }
+
+            /* Dropdowns dentro del menú móvil */
             .dropdown {
                 position: static;
                 transform: none;
                 opacity: 1;
                 visibility: visible;
-                background: transparent;
+                background: rgba(255, 255, 255, 0.02);
                 border: none;
                 box-shadow: none;
                 display: none;
-                padding-left: 1rem;
+                width: 100%;
+                padding: 0.5rem 0 1rem 1rem;
             }
+
             .nav-item.active .dropdown {
                 display: block;
+            }
+
+            .dropdown li a {
+                padding: 0.6rem 0;
+            }
+
+            /* Hero Section Mobile */
+            .hero {
+                padding-top: 90px;
+                height: auto;
+                min-height: auto;
+            }
+
+            .hero-grid {
+                grid-template-columns: 1fr;
+                gap: 2.5rem;
+            }
+
+            .hero-title {
+                font-size: 2.8rem;
+                margin-bottom: 1.2rem;
+            }
+
+            .hero-text p {
+                font-size: 0.9rem;
+                margin-bottom: 2rem;
+            }
+
+            .hero-image img {
+                height: 50vh;
+            }
+
+            /* Galería Mobile */
+            .gallery-section {
+                padding: 5rem 0;
+            }
+
+            .gallery-nav {
+                gap: 1.2rem;
+            }
+
+            .gallery-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+
+            .gi-1, .gi-2, .gi-3, .gi-4 {
+                grid-column: span 1;
+                height: 350px;
+            }
+
+            .item-info {
+                opacity: 1; /* Mostrar información directamente en móvil */
+                padding: 1.2rem;
+            }
+
+            /* Servicios Mobile */
+            .services-section {
+                padding: 5rem 0;
+            }
+
+            .service-row {
+                grid-template-columns: 1fr;
+                gap: 0.8rem;
+                padding: 2rem 0;
+            }
+
+            .service-desc {
+                padding-right: 0;
+                margin-bottom: 1rem;
+            }
+
+            .service-action {
+                text-align: left;
+            }
+
+            .service-action .btn {
+                width: 100%;
+            }
+
+            /* Acerca de Mobile */
+            .about-section {
+                padding: 5rem 0;
+            }
+
+            .about-grid {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+            }
+
+            .quote-box {
+                font-size: 1.1rem;
+                margin: 2rem 0;
+                padding-left: 1.2rem;
+            }
+
+            /* Contacto Mobile */
+            .contact-section {
+                padding: 5rem 0;
+            }
+
+            .contact-grid {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+            }
+
+            .btn-whatsapp {
+                width: 100%;
+            }
+
+            /* Footer Mobile */
+            .footer {
+                padding: 3rem 0;
+            }
+
+            .footer-container {
+                flex-direction: column-reverse;
+                gap: 2rem;
+                text-align: center;
+            }
+
+            .footer-socials {
+                justify-content: center;
+                gap: 1.5rem;
             }
         }
     </style>
@@ -658,7 +812,7 @@
                 <span class="section-subtitle">Estudio de Fotografía</span>
                 <h1 class="hero-title">La elegancia de lo <em>efímero</em>.</h1>
                 <p>Fotografía de autor enfocada en la luz natural, la narrativa visual y la belleza estética del retrato contemporáneo.</p>
-                <a href="#gallery" class="btn btn-gold">Explorar Trabajos</a>
+                <a href="#gallery" class="btn btn-gold" style="width: 100%; max-width: 250px;">Explorar Trabajos</a>
             </div>
             <div class="hero-image">
                 <img src="https://images.unsplash.com/photo-1509631179647-0177331693ae?auto=format&fit=crop&w=1000&q=80" alt="Fotografía de Moda">
@@ -833,22 +987,48 @@
 
     <!-- JAVASCRIPT -->
     <script>
-        // Toggle Menú Móvil
+        // Toggle Menú Móvil e Icono (Hamburguesa / Cerrar)
         const mobileToggle = document.getElementById('mobileToggle');
         const navLinks = document.getElementById('navLinks');
+        const toggleIcon = mobileToggle.querySelector('i');
 
         mobileToggle.addEventListener('click', () => {
             navLinks.classList.toggle('active');
+            if (navLinks.classList.contains('active')) {
+                toggleIcon.classList.remove('fa-bars');
+                toggleIcon.classList.add('fa-xmark');
+            } else {
+                toggleIcon.classList.remove('fa-xmark');
+                toggleIcon.classList.add('fa-bars');
+            }
+        });
+
+        // Cerrar menú móvil al hacer clic en un enlace simple
+        const links = document.querySelectorAll('.nav-link:not(:has(+ .dropdown))');
+        links.forEach(link => {
+            link.addEventListener('click', () => {
+                if (window.innerWidth <= 992) {
+                    navLinks.classList.remove('active');
+                    toggleIcon.classList.remove('fa-xmark');
+                    toggleIcon.classList.add('fa-bars');
+                }
+            });
         });
 
         // Toggle Dropdowns en Móvil
         const navItems = document.querySelectorAll('.nav-item');
         navItems.forEach(item => {
-            item.addEventListener('click', () => {
-                if(window.innerWidth <= 992) {
-                    item.classList.toggle('active');
-                }
-            });
+            const link = item.querySelector('.nav-link');
+            const dropdown = item.querySelector('.dropdown');
+            
+            if (dropdown) {
+                link.addEventListener('click', (e) => {
+                    if (window.innerWidth <= 992) {
+                        e.preventDefault();
+                        item.classList.toggle('active');
+                    }
+                });
+            }
         });
 
         // Filtrado de Galería
