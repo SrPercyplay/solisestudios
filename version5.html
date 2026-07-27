@@ -292,107 +292,6 @@
         }
 
         /* ==========================================
-           GALERÍA Y PORTAFOLIO
-        ========================================== */
-        .gallery-section {
-            padding: 8rem 0;
-            background: var(--bg-secondary);
-        }
-
-        .gallery-nav {
-            display: flex;
-            gap: 2rem;
-            margin-bottom: 3rem;
-            border-bottom: 1px solid var(--accent-border);
-            padding-bottom: 1rem;
-            overflow-x: auto;
-            white-space: nowrap;
-        }
-
-        .filter-btn {
-            background: none;
-            border: none;
-            color: var(--text-muted);
-            font-family: var(--font-body);
-            font-size: 0.75rem;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            cursor: pointer;
-            transition: var(--transition);
-            position: relative;
-            padding-bottom: 1rem;
-        }
-
-        .filter-btn.active, .filter-btn:hover {
-            color: var(--text-main);
-        }
-
-        .filter-btn.active::after {
-            content: '';
-            position: absolute;
-            bottom: -1px;
-            left: 0;
-            width: 100%;
-            height: 2px;
-            background: var(--accent-gold);
-        }
-
-        .gallery-grid {
-            display: grid;
-            grid-template-columns: repeat(12, 1fr);
-            gap: 2rem;
-        }
-
-        .gallery-item {
-            position: relative;
-            overflow: hidden;
-        }
-
-        .gallery-item img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: var(--transition);
-        }
-
-        .gallery-item:hover img {
-            transform: scale(1.05);
-        }
-
-        .item-info {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            padding: 2rem;
-            background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
-            opacity: 0;
-            transition: var(--transition);
-        }
-
-        .gallery-item:hover .item-info {
-            opacity: 1;
-        }
-
-        .item-info h4 {
-            font-family: var(--font-head);
-            font-size: 1.2rem;
-            font-weight: 400;
-        }
-
-        .item-info span {
-            font-size: 0.7rem;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            color: var(--accent-gold);
-        }
-
-        .gi-1 { grid-column: span 8; height: 500px; }
-        .gi-2 { grid-column: span 4; height: 500px; }
-        .gi-3 { grid-column: span 4; height: 600px; }
-        .gi-4 { grid-column: span 8; height: 600px; }
-
-        /* ==========================================
            SERVICIOS EDITORIALES
         ========================================== */
         .services-section {
@@ -522,6 +421,11 @@
             border-color: var(--accent-gold);
         }
 
+        .minimal-form option {
+            background-color: var(--bg-secondary);
+            color: var(--text-main);
+        }
+
         /* ==========================================
            FOOTER
         ========================================== */
@@ -616,7 +520,6 @@
                 font-size: 0.85rem;
             }
 
-            /* Dropdowns dentro del menú móvil */
             .dropdown {
                 position: static;
                 transform: none;
@@ -662,30 +565,6 @@
 
             .hero-image img {
                 height: 50vh;
-            }
-
-            /* Galería Mobile */
-            .gallery-section {
-                padding: 5rem 0;
-            }
-
-            .gallery-nav {
-                gap: 1.2rem;
-            }
-
-            .gallery-grid {
-                grid-template-columns: 1fr;
-                gap: 1.5rem;
-            }
-
-            .gi-1, .gi-2, .gi-3, .gi-4 {
-                grid-column: span 1;
-                height: 350px;
-            }
-
-            .item-info {
-                opacity: 1; /* Mostrar información directamente en móvil */
-                padding: 1.2rem;
             }
 
             /* Servicios Mobile */
@@ -776,16 +655,6 @@
                     <a href="#home" class="nav-link">Inicio</a>
                 </li>
                 <li class="nav-item">
-                    <a href="#gallery" class="nav-link">
-                        Portafolio <i class="fa-solid fa-angle-down" style="font-size: 0.6rem;"></i>
-                    </a>
-                    <ul class="dropdown">
-                        <li><a href="#gallery">Editorial & Moda</a></li>
-                        <li><a href="#gallery">Retrato Íntimo</a></li>
-                        <li><a href="#gallery">Arquitectura</a></li>
-                    </ul>
-                </li>
-                <li class="nav-item">
                     <a href="#services" class="nav-link">
                         Servicios <i class="fa-solid fa-angle-down" style="font-size: 0.6rem;"></i>
                     </a>
@@ -812,7 +681,7 @@
                 <span class="section-subtitle">Estudio de Fotografía</span>
                 <h1 class="hero-title">La elegancia de lo <em>efímero</em>.</h1>
                 <p>Fotografía de autor enfocada en la luz natural, la narrativa visual y la belleza estética del retrato contemporáneo.</p>
-                <a href="#gallery" class="btn btn-gold" style="width: 100%; max-width: 250px;">Explorar Trabajos</a>
+                <a href="#services" class="btn btn-gold" style="width: 100%; max-width: 250px;">Ver Servicios</a>
             </div>
             <div class="hero-image">
                 <img src="https://images.unsplash.com/photo-1509631179647-0177331693ae?auto=format&fit=crop&w=1000&q=80" alt="Fotografía de Moda">
@@ -820,63 +689,12 @@
         </div>
     </section>
 
-    <!-- GALERÍA / PORTAFOLIO -->
-    <section class="gallery-section" id="gallery">
-        <div class="container">
-            <div class="section-header">
-                <span class="section-subtitle">Selección Archivo</span>
-                <h2 class="section-title">Obras Recientes</h2>
-            </div>
-
-            <div class="gallery-nav">
-                <button class="filter-btn active" data-filter="all">Todas</button>
-                <button class="filter-btn" data-filter="editorial">Editorial</button>
-                <button class="filter-btn" data-filter="retrato">Retrato</button>
-                <button class="filter-btn" data-filter="arquitectura">Arquitectura</button>
-            </div>
-
-            <div class="gallery-grid">
-                <div class="gallery-item gi-1" data-category="editorial">
-                    <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=1200&q=80" alt="Editorial Vogue">
-                    <div class="item-info">
-                        <span>Editorial</span>
-                        <h4>Luz Nocturna & Sombras</h4>
-                    </div>
-                </div>
-
-                <div class="gallery-item gi-2" data-category="retrato">
-                    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=800&q=80" alt="Retrato Masculino">
-                    <div class="item-info">
-                        <span>Retrato</span>
-                        <h4>Estudio Monocromo</h4>
-                    </div>
-                </div>
-
-                <div class="gallery-item gi-3" data-category="arquitectura">
-                    <img src="https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=800&q=80" alt="Arquitectura Minimalista">
-                    <div class="item-info">
-                        <span>Arquitectura</span>
-                        <h4>Líneas & Geometría</h4>
-                    </div>
-                </div>
-
-                <div class="gallery-item gi-4" data-category="editorial">
-                    <img src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&w=1200&q=80" alt="Moda">
-                    <div class="item-info">
-                        <span>Editorial</span>
-                        <h4>Colección Otoño</h4>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- SERVICIOS -->
+    <!-- SERVICIOS DE FOTOGRAFÍA Y EDICIÓN -->
     <section class="services-section" id="services">
         <div class="container">
             <div class="section-header">
                 <span class="section-subtitle">Propuestas Visuales</span>
-                <h2 class="section-title">Servicios de Fotografía</h2>
+                <h2 class="section-title">Servicios de Fotografía y Edición</h2>
             </div>
 
             <div class="services-list">
@@ -948,26 +766,23 @@
                     </div>
                 </div>
 
-                <!-- Formulario Minimalista -->
-                <form class="minimal-form" onsubmit="event.preventDefault(); alert('Gracias. Su mensaje ha sido recibido.');">
+                <!-- Formulario Redirigido a WhatsApp -->
+                <form class="minimal-form" id="whatsappForm">
                     <div class="form-group">
-                        <input type="text" placeholder="NOMBRE COMPLETO" required>
+                        <input type="text" id="nombre" placeholder="NOMBRE COMPLETO" required>
                     </div>
                     <div class="form-group">
-                        <input type="email" placeholder="CORREO ELECTRÓNICO" required>
-                    </div>
-                    <div class="form-group">
-                        <select style="color: #8e8e93;">
+                        <select id="tipoProyecto" style="color: #8e8e93;">
                             <option value="" disabled selected>TIPO DE PROYECTO</option>
-                            <option value="editorial">Editorial / Moda</option>
-                            <option value="retrato">Retrato Personal</option>
-                            <option value="campana">Campaña Comercial</option>
+                            <option value="Editorial / Moda">Editorial / Moda</option>
+                            <option value="Retrato Personal">Retrato Personal</option>
+                            <option value="Campaña Comercial">Campaña Comercial</option>
                         </select>
                     </div>
                     <div class="form-group">
-                        <textarea rows="4" placeholder="DETALLES DE LA PROPUESTA" required></textarea>
+                        <textarea id="mensaje" rows="4" placeholder="DETALLES DE LA PROPUESTA" required></textarea>
                     </div>
-                    <button type="submit" class="btn btn-gold" style="width: 100%;">Enviar Mensaje</button>
+                    <button type="submit" class="btn btn-gold" style="width: 100%;">Enviar Mensaje por WhatsApp</button>
                 </form>
             </div>
         </div>
@@ -977,79 +792,23 @@
     <footer class="footer">
         <div class="container footer-container">
             <p>&copy; 2026 SOLIS ESTUDIO. Todos los derechos reservados.</p>
-            <div class="footer-socials">
-                <a href="#">Instagram</a>
-                <a href="#">Behance</a>
-                <a href="#">Vogue Italia</a>
-            </div>
         </div>
     </footer>
 
-    <!-- JAVASCRIPT -->
     <script>
-        // Toggle Menú Móvil e Icono (Hamburguesa / Cerrar)
-        const mobileToggle = document.getElementById('mobileToggle');
-        const navLinks = document.getElementById('navLinks');
-        const toggleIcon = mobileToggle.querySelector('i');
-
-        mobileToggle.addEventListener('click', () => {
-            navLinks.classList.toggle('active');
-            if (navLinks.classList.contains('active')) {
-                toggleIcon.classList.remove('fa-bars');
-                toggleIcon.classList.add('fa-xmark');
-            } else {
-                toggleIcon.classList.remove('fa-xmark');
-                toggleIcon.classList.add('fa-bars');
-            }
-        });
-
-        // Cerrar menú móvil al hacer clic en un enlace simple
-        const links = document.querySelectorAll('.nav-link:not(:has(+ .dropdown))');
-        links.forEach(link => {
-            link.addEventListener('click', () => {
-                if (window.innerWidth <= 992) {
-                    navLinks.classList.remove('active');
-                    toggleIcon.classList.remove('fa-xmark');
-                    toggleIcon.classList.add('fa-bars');
-                }
-            });
-        });
-
-        // Toggle Dropdowns en Móvil
-        const navItems = document.querySelectorAll('.nav-item');
-        navItems.forEach(item => {
-            const link = item.querySelector('.nav-link');
-            const dropdown = item.querySelector('.dropdown');
+        // Redirección del Formulario a WhatsApp
+        document.getElementById('whatsappForm').addEventListener('submit', function(e) {
+            e.preventDefault();
             
-            if (dropdown) {
-                link.addEventListener('click', (e) => {
-                    if (window.innerWidth <= 992) {
-                        e.preventDefault();
-                        item.classList.toggle('active');
-                    }
-                });
-            }
-        });
+            var nombre = document.getElementById('nombre').value;
+            var tipoProyecto = document.getElementById('tipoProyecto').value || 'No especificado';
+            var mensaje = document.getElementById('mensaje').value;
+            var telefono = '59162617853';
 
-        // Filtrado de Galería
-        const filterBtns = document.querySelectorAll('.filter-btn');
-        const galleryItems = document.querySelectorAll('.gallery-item');
-
-        filterBtns.forEach(btn => {
-            btn.addEventListener('click', () => {
-                filterBtns.forEach(b => b.classList.remove('active'));
-                btn.classList.add('active');
-
-                const filter = btn.getAttribute('data-filter');
-
-                galleryItems.forEach(item => {
-                    if (filter === 'all' || item.getAttribute('data-category') === filter) {
-                        item.style.display = 'block';
-                    } else {
-                        item.style.display = 'none';
-                    }
-                });
-            });
+            var textoWhatsApp = `Hola, mi nombre es *${nombre}*.\nEstoy interesado/a en un proyecto de tipo: *${tipoProyecto}*.\n\n*Detalles de la propuesta:*\n${mensaje}`;
+            
+            var url = `https://wa.me/${telefono}?text=${encodeURIComponent(textoWhatsApp)}`;
+            window.open(url, '_blank');
         });
     </script>
 </body>
