@@ -242,6 +242,7 @@
             border-radius: 4px;
             position: relative;
             overflow: hidden;
+            cursor: pointer;
         }
 
         .btn-cam::before {
@@ -364,6 +365,7 @@
             transition: all 0.4s var(--ease);
             box-shadow: var(--shadow-inset);
             overflow: hidden;
+            z-index: 1;
         }
 
         .dial-card::after {
@@ -375,6 +377,7 @@
             height: 0;
             background: linear-gradient(to top, rgba(249, 115, 22, 0.1), transparent);
             transition: height 0.4s var(--ease);
+            z-index: -1;
         }
 
         .dial-card:hover {
@@ -391,116 +394,137 @@
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            width: 45px;
-            height: 45px;
+            width: 48px;
+            height: 48px;
             background: var(--cam-metal);
-            color: var(--text-main);
+            border: 1px solid var(--cam-border);
+            border-radius: 50%;
+            color: var(--accent-orange);
             font-family: var(--font-tech);
             font-weight: 700;
-            font-size: 1.2rem;
             margin-bottom: 25px;
-            border: 1px solid var(--cam-border);
-            border-radius: 4px;
             box-shadow: var(--shadow-inset);
-            position: relative;
-            z-index: 1;
+            font-size: 1.2rem;
         }
 
         .dial-card h3 {
-            font-size: 1.5rem;
+            font-size: 1.4rem;
             margin-bottom: 15px;
-            color: var(--text-main);
-            position: relative;
-            z-index: 1;
-        }
-
-        .dial-card p {
-            font-size: 0.95rem;
-            position: relative;
-            z-index: 1;
-            transition: color 0.3s ease;
-        }
-        
-        .dial-card:hover p {
             color: var(--text-main);
         }
 
         /* =========================================
-           CONTACTO (Panel de Control)
+           PORTAFOLIO (Galería de Capturas)
            ========================================= */
-        .contact-panel {
-            background: var(--cam-grip);
-            border: 2px solid var(--cam-border);
-            padding: 60px;
-            max-width: 900px;
-            margin: 0 auto;
+        .portfolio-grid {
             display: grid;
-            grid-template-columns: 1fr 1.2fr;
-            gap: 50px;
-            border-radius: 8px;
-            box-shadow: var(--shadow-dark), var(--shadow-inset);
-            position: relative;
-        }
-        
-        .contact-panel::before {
-            content: '';
-            position: absolute;
-            top: 20px;
-            right: 20px;
-            width: 10px;
-            height: 10px;
-            background-color: var(--focus-green);
-            border-radius: 50%;
-            box-shadow: 0 0 10px var(--focus-green);
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
         }
 
-        .contact-info {
-            border-right: 1px solid var(--cam-border);
-            padding-right: 40px;
+        .portfolio-item {
+            position: relative;
+            background: #000;
+            border: 1fr solid var(--cam-border);
+            border-radius: 4px;
+            overflow: hidden;
+            aspect-ratio: 4/3;
+        }
+
+        .portfolio-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s var(--ease), filter 0.6s var(--ease);
+            filter: grayscale(40%) contrast(105%);
+        }
+
+        .portfolio-item:hover img {
+            transform: scale(1.05);
+            filter: grayscale(0%) contrast(110%);
+        }
+
+        .portfolio-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(10, 10, 10, 0.9) 0%, transparent 60%);
             display: flex;
             flex-direction: column;
-            justify-content: center;
+            justify-content: flex-end;
+            padding: 25px;
+            opacity: 0;
+            transition: opacity 0.4s var(--ease);
         }
 
-        .contact-info h3 {
-            color: var(--text-main);
-            margin-bottom: 15px;
+        .portfolio-item:hover .portfolio-overlay {
+            opacity: 1;
         }
 
-        .whatsapp-trigger {
-            margin-top: 30px;
-            display: inline-flex;
-            align-items: center;
-            gap: 15px;
-            background: #000;
-            padding: 15px 25px;
-            border: 1px solid var(--focus-green);
-            color: var(--text-main);
-            text-decoration: none;
+        .portfolio-meta {
             font-family: var(--font-tech);
-            font-size: 1.1rem;
-            font-weight: 500;
-            transition: all 0.3s var(--ease);
-            border-radius: 4px;
+            font-size: 0.75rem;
+            color: var(--accent-orange);
+            margin-bottom: 5px;
+        }
+
+        .portfolio-title {
+            font-size: 1.2rem;
+            color: var(--text-main);
+        }
+
+        /* =========================================
+           SPECS / HUD SECTION
+           ========================================= */
+        .specs-section {
+            background: var(--cam-grip);
+        }
+
+        .specs-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 30px;
+            text-align: center;
+        }
+
+        .spec-box {
+            background: var(--cam-body);
+            border: 1px solid var(--cam-border);
+            padding: 40px 20px;
+            border-radius: 6px;
             box-shadow: var(--shadow-inset);
         }
 
-        .whatsapp-trigger i {
-            color: var(--focus-green);
-            font-size: 1.6rem;
-            transition: transform 0.3s ease;
+        .spec-value {
+            font-family: var(--font-tech);
+            font-size: 2.8rem;
+            font-weight: 700;
+            color: var(--text-main);
+            margin-bottom: 10px;
         }
 
-        .whatsapp-trigger:hover {
-            background: var(--focus-green);
-            color: #000;
-            box-shadow: 0 0 20px rgba(34, 197, 94, 0.4);
-            transform: translateY(-2px);
+        .spec-value span {
+            color: var(--accent-red);
         }
 
-        .whatsapp-trigger:hover i {
-            color: #000;
-            transform: scale(1.1) rotate(-10deg);
+        .spec-label {
+            font-family: var(--font-tech);
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: var(--text-muted);
+        }
+
+        /* =========================================
+           CONTACTO (Panel de Configuración)
+           ========================================= */
+        .contact-container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: var(--cam-grip);
+            border: 1px solid var(--cam-border);
+            border-radius: 6px;
+            padding: 50px;
+            box-shadow: var(--shadow-dark), var(--shadow-inset);
         }
 
         .form-group {
@@ -510,194 +534,249 @@
         .form-group label {
             display: block;
             font-family: var(--font-tech);
-            font-size: 0.75rem;
-            margin-bottom: 10px;
-            color: var(--text-muted);
+            font-size: 0.8rem;
             text-transform: uppercase;
-            letter-spacing: 1.5px;
+            letter-spacing: 1px;
+            color: var(--text-muted);
+            margin-bottom: 10px;
         }
 
         .form-control {
             width: 100%;
-            padding: 14px;
-            background: #000;
+            padding: 15px 20px;
+            background: var(--cam-body);
             border: 1px solid var(--cam-border);
+            border-radius: 4px;
             color: var(--text-main);
             font-family: var(--font-tech);
             font-size: 0.9rem;
-            border-radius: 4px;
-            transition: all 0.3s ease;
-            box-shadow: var(--shadow-inset);
+            transition: border-color 0.3s var(--ease);
         }
 
         .form-control:focus {
             outline: none;
             border-color: var(--accent-orange);
-            box-shadow: 0 0 10px rgba(249, 115, 22, 0.2), var(--shadow-inset);
         }
-        
+
         textarea.form-control {
             resize: vertical;
+            min-height: 120px;
         }
 
         /* =========================================
            FOOTER
            ========================================= */
         footer {
-            padding: 40px 0;
-            text-align: center;
+            padding: 50px 0;
+            background: #050505;
             font-family: var(--font-tech);
-            color: var(--text-muted);
             font-size: 0.8rem;
-            background: #080808;
-            letter-spacing: 0.5px;
+            color: var(--text-muted);
+        }
+
+        .footer-flex {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
         }
 
         /* =========================================
-           MEDIA QUERIES (Responsivo)
+           RESPONSIVE DESIGN
            ========================================= */
-        @media (max-width: 1100px) {
-            .hero-text h1 { font-size: 3rem; }
-        }
-
-        @media (max-width: 900px) {
-            section { padding: 80px 0; }
-            .hero-grid { grid-template-columns: 1fr; gap: 50px; text-align: center; }
-            .hero-text p { margin-left: auto; margin-right: auto; }
-            .viewfinder-frame img { height: 380px; }
-            
-            .contact-panel { grid-template-columns: 1fr; gap: 40px; padding: 40px; }
-            .contact-info {
-                border-right: none;
-                border-bottom: 1px solid var(--cam-border);
-                padding-bottom: 40px;
-                padding-right: 0;
-                text-align: center;
-                align-items: center;
+        @media (max-width: 992px) {
+            .hero-grid {
+                grid-template-columns: 1fr;
+                gap: 50px;
             }
-            
-            .camera-hud-info, .nav-menu { display: none; }
-            .logo-camera { font-size: 1.3rem; }
+            .portfolio-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .specs-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
         }
 
-        @media (max-width: 600px) {
-            .hero-text h1 { font-size: 2.4rem; }
-            .section-header h2 { font-size: 2.2rem; }
-            .btn-cam { width: 100%; justify-content: center; }
+        @media (max-width: 768px) {
+            .nav-menu, .camera-hud-info {
+                display: none;
+            }
+            .hero-text h1 {
+                font-size: 2.8rem;
+            }
+            .portfolio-grid {
+                grid-template-columns: 1fr;
+            }
+            .specs-grid {
+                grid-template-columns: 1fr;
+            }
+            .contact-container {
+                padding: 30px 20px;
+            }
+            .footer-flex {
+                flex-direction: column;
+                gap: 20px;
+                text-align: center;
+            }
         }
     </style>
 </head>
 <body>
 
-    <!-- HEADER INTERFAZ CÁMARA (EVF HUD) -->
+    <!-- NAVEGACIÓN -->
     <header>
         <div class="container nav-container">
             <a href="#" class="logo-camera">
-                <span class="red-dot"></span> SOLIS ESTUDIO
+                <span class="red-dot"></span>
+                SOLIS ESTUDIO
             </a>
+            
+            <ul class="nav-menu">
+                <li><a href="#servicios" class="nav-link">Servicios</a></li>
+                <li><a href="#portafolio" class="nav-link">Portafolio</a></li>
+                <li><a href="#specs" class="nav-link">Especificaciones</a></li>
+                <li><a href="#contacto" class="nav-link">Contacto</a></li>
+            </ul>
 
             <div class="camera-hud-info">
-                <span><i class="fa-solid fa-clapperboard"></i> [RAW]</span>
-                <span>ISO 64</span>
-                <span>f/2.8</span>
-                <span>1/1600s</span>
-                <span>50mm</span>
-                <span><i class="fa-solid fa-battery-three-quarters" style="color: var(--focus-green);"></i> 82%</span>
+                <span><i class="fa-solid fa-battery-full"></i> 100%</span>
+                <span><i class="fa-solid fa-sd-card"></i> RAW+JPG</span>
             </div>
-
-            <ul class="nav-menu">
-                <li><a href="#home" class="nav-link">Visor</a></li>
-                <li><a href="#services" class="nav-link">Diales</a></li>
-                <li><a href="#contact" class="nav-link">Disparo</a></li>
-            </ul>
         </div>
     </header>
 
-    <!-- HERO SECTION (Viewfinder) -->
-    <section class="hero" id="home">
-        <div class="container hero-grid">
-            <div class="hero-text">
-                <h1>Ingeniería Visual & <span>Óptica</span> de Alto Rendimiento.</h1>
-                <p>Desarrollamos soluciones visuales de precisión milimétrica. Especialistas en captura de alto rango dinámico, fidelidad cromática y enfoque crítico para proyectos exigentes.</p>
-                <a href="#contact" class="btn-cam"><i class="fa-solid fa-shutter-speed"></i> Iniciar Captura</a>
-            </div>
-            
-            <div class="viewfinder-frame">
-                <img src="https://images.unsplash.com/photo-1520390138845-fd2d229dd553?q=80&w=1200&auto=format&fit=crop" alt="Óptica Profesional Solis Estudio">
-                <div class="af-corners">
-                    <div class="af-box"></div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- SERVICIOS (Diales de Modo) -->
-    <section id="services">
+    <!-- HERO SECTION -->
+    <section class="hero">
         <div class="container">
-            <div class="section-header">
-                <p>[ Drive Mode Selection ]</p>
-                <h2>Especialidades Ópticas</h2>
-            </div>
-
-            <div class="services-grid">
-                <div class="dial-card">
-                    <span class="dial-badge">M</span>
-                    <h3>Retrato Fine-Art</h3>
-                    <p>Control lumínico absoluto en estudio, micro-contraste optimizado y texturas de piel de ultra-alta resolución.</p>
-                </div>
-                <div class="dial-card">
-                    <span class="dial-badge">Av</span>
-                    <h3>Editorial & Moda</h3>
-                    <p>Narrativa visual avanzada con gestión de color de precisión para campañas publicitarias y Lookbooks.</p>
-                </div>
-                <div class="dial-card">
-                    <span class="dial-badge">Tv</span>
-                    <h3>Comercial & Producto</h3>
-                    <p>Captura técnica de producto con iluminación de precisión para resaltar materiales, geometría y empaque.</p>
-                </div>
-                <div class="dial-card">
-                    <span class="dial-badge"><i class="fa-solid fa-wand-magic-sparkles"></i></span>
-                    <h3>Post-Procesado RAW</h3>
-                    <p>Revelado digital avanzado, *color grading* cinematográfico y retoque *high-end* conservando la integridad óptica.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- CONTACTO (Panel de Control de Disparo) -->
-    <section id="contact">
-        <div class="container">
-            <div class="section-header">
-                <p>[ Remote Trigger Terminal ]</p>
-                <h2>Coordinar Sesión</h2>
-            </div>
-
-            <div class="contact-panel">
-                <div class="contact-info">
-                    <i class="fa-solid fa-satellite-dish" style="font-size: 3rem; color: var(--cam-border); margin-bottom: 20px;"></i>
-                    <h3 style="font-size: 1.6rem;">Conexión Directa</h3>
-                    <p style="margin-bottom: 10px;">Establece contacto para definir requerimientos técnicos, <br>presupuestos y disponibilidad de agenda.</p>
-
-                    <a href="https://wa.me/59162617853" target="_blank" class="whatsapp-trigger">
-                        <i class="fa-brands fa-whatsapp"></i> Enviar Link de Enlace
+            <div class="hero-grid">
+                <div class="hero-text">
+                    <h1>PRECISIÓN ÓPTICA Y <span>NARRATIVA</span> VISUAL</h1>
+                    <p>Captura de alto impacto, producción cinematográfica y desarrollo de contenido visual optimizado con estándares de grado profesional.</p>
+                    <a href="#contacto" class="btn-cam">
+                        <i class="fa-solid fa-aperture"></i> Iniciar Proyecto
                     </a>
                 </div>
+                <div class="viewfinder-frame">
+                    <img src="https://images.unsplash.com/photo-1516035069371-29a1b244cc32?auto=format&fit=crop&w=1000&q=80" alt="Cámara Profesional">
+                    <div class="af-corners">
+                        <div class="af-box"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-                <form onsubmit="event.preventDefault(); alert('Señal enviada. Nos conectaremos en breve.');">
+    <!-- SERVICIOS -->
+    <section id="servicios">
+        <div class="container">
+            <div class="section-header">
+                <p>[ Modo de Operación ]</p>
+                <h2>SERVICIOS DE PRODUCCIÓN</h2>
+            </div>
+            
+            <div class="services-grid">
+                <div class="dial-card">
+                    <div class="dial-badge"><i class="fa-solid fa-camera"></i></div>
+                    <h3>Fotografía Editorial</h3>
+                    <p>Cobertura técnica con gestión de color calibrada, ideal para publicaciones, moda y retratos corporativos de alto perfil.</p>
+                </div>
+                
+                <div class="dial-card">
+                    <div class="dial-badge"><i class="fa-solid fa-video"></i></div>
+                    <h3>Cinematografía 4K</h3>
+                    <p>Registros en perfil logarítmico de alto rango dinámico (LOG), corrección cromática avanzada y entrega multi-plataforma.</p>
+                </div>
+                
+                <div class="dial-card">
+                    <div class="dial-badge"><i class="fa-solid fa-layer-group"></i></div>
+                    <h3>Post-producción</h3>
+                    <p>Retoque digital no destructivo, flujo de trabajo RAW y composición para estándares de impresión y pantalla.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PORTAFOLIO -->
+    <section id="portafolio">
+        <div class="container">
+            <div class="section-header">
+                <p>[ Capturas Recientes ]</p>
+                <h2>GALERÍA DE TRABAJOS</h2>
+            </div>
+
+            <div class="portfolio-grid">
+                <div class="portfolio-item">
+                    <img src="https://images.unsplash.com/photo-1492691527719-9d1e07e534b4?auto=format&fit=crop&w=800&q=80" alt="Proyecto 1">
+                    <div class="portfolio-overlay">
+                        <span class="portfolio-meta">F/2.8 | 1/500s | ISO 100</span>
+                        <h3 class="portfolio-title">Campañas Exteriores</h3>
+                    </div>
+                </div>
+                <div class="portfolio-item">
+                    <img src="https://images.unsplash.com/photo-1508700115892-45ecd05ae2ad?auto=format&fit=crop&w=800&q=80" alt="Proyecto 2">
+                    <div class="portfolio-overlay">
+                        <span class="portfolio-meta">F/1.4 | 1/250s | ISO 400</span>
+                        <h3 class="portfolio-title">Retrato Cinematográfico</h3>
+                    </div>
+                </div>
+                <div class="portfolio-item">
+                    <img src="https://images.unsplash.com/photo-1512790182412-b19e6d61b397?auto=format&fit=crop&w=800&q=80" alt="Proyecto 3">
+                    <div class="portfolio-overlay">
+                        <span class="portfolio-meta">F/5.6 | 1/1000s | ISO 200</span>
+                        <h3 class="portfolio-title">Arquitectura Urbana</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ESPECIFICACIONES / METRICAS HUD -->
+    <section id="specs" class="specs-section">
+        <div class="container">
+            <div class="specs-grid">
+                <div class="spec-box">
+                    <div class="spec-value">100<span>%</span></div>
+                    <div class="spec-label">COBERTURA COLOR DCI-P3</div>
+                </div>
+                <div class="spec-box">
+                    <div class="spec-value">4K<span>+</span></div>
+                    <div class="spec-label">RESOLUCIÓN NATIVA RAW</div>
+                </div>
+                <div class="spec-box">
+                    <div class="spec-value">14<span>EV</span></div>
+                    <div class="spec-label">RANGO DINÁMICO</div>
+                </div>
+                <div class="spec-box">
+                    <div class="spec-value">0<span>ms</span></div>
+                    <div class="spec-label">LATENCIA EN MONITOREO</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACTO -->
+    <section id="contacto">
+        <div class="container">
+            <div class="section-header">
+                <p>[ Iniciar Foco ]</p>
+                <h2>CONTACTA AL ESTUDIO</h2>
+            </div>
+
+            <div class="contact-container">
+                <form action="#" method="POST" onsubmit="event.preventDefault();">
                     <div class="form-group">
-                        <label>ID / Nombre del Cliente</label>
-                        <input type="text" class="form-control" placeholder="Ej. Gabriel Solis" required>
+                        <label for="nombre">Nombre / Firma</label>
+                        <input type="text" id="nombre" class="form-control" placeholder="Ej. Carlos Mendoza" required>
                     </div>
                     <div class="form-group">
-                        <label>Canal de Contacto (Email)</label>
-                        <input type="email" class="form-control" placeholder="contacto@cliente.com" required>
+                        <label for="email">Correo Electrónico</label>
+                        <input type="email" id="email" class="form-control" placeholder="nombre@dominio.com" required>
                     </div>
                     <div class="form-group">
-                        <label>Especificaciones del Proyecto (Metadata)</label>
-                        <textarea class="form-control" rows="4" placeholder="Describa brevemente la sesión, producto o campaña..." required></textarea>
+                        <label for="mensaje">Detalles del Proyecto</label>
+                        <textarea id="mensaje" class="form-control" placeholder="Describa el alcance, fechas estimadas y requerimientos técnicos..." required></textarea>
                     </div>
                     <button type="submit" class="btn-cam" style="width: 100%; justify-content: center;">
-                        <i class="fa-solid fa-radio"></i> Transmitir Señal
+                        <i class="fa-solid fa-paper-plane"></i> Enviar Parámetros
                     </button>
                 </form>
             </div>
@@ -706,10 +785,13 @@
 
     <!-- FOOTER -->
     <footer>
-        <div class="container">
-            <i class="fa-solid fa-camera-retro" style="font-size: 1.5rem; color: var(--cam-metal); margin-bottom: 15px;"></i>
-            <p>&copy; 2026 Solis Estudio. Ingeniería Óptica & Captura Fotográfica Profesional.</p>
-            <p style="font-size: 0.7rem; margin-top: 5px;">All technical specifications subject to change. [Ver. 4.1]</p>
+        <div class="container footer-flex">
+            <div>
+                <p>&copy; 2026 SOLIS ESTUDIO. Todos los derechos reservados.</p>
+            </div>
+            <div>
+                <p>SISTEMA DE CAPTURA ÓPTICA V2.4</p>
+            </div>
         </div>
     </footer>
 
