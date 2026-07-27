@@ -422,15 +422,102 @@
             font-family: var(--font-title);
         }
 
+        /* AJUSTES RESPONSIVOS PARA TABLETS Y DISPOSITIVOS MÓVILES */
         @media (max-width: 850px) {
+            section {
+                padding: 70px 0;
+            }
+
+            .container {
+                padding: 0 20px;
+            }
+
+            .nav-container {
+                flex-direction: column;
+                gap: 15px;
+                padding: 15px 0;
+            }
+
+            .nav-menu {
+                gap: 20px;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .dropdown-menu {
+                position: static;
+                opacity: 1;
+                visibility: visible;
+                width: 100%;
+                background: transparent;
+                border: none;
+                padding: 5px 0 0 10px;
+                display: none;
+            }
+
+            .dropdown:hover .dropdown-menu {
+                display: block;
+            }
+
+            .hero {
+                min-height: auto;
+                padding-top: 140px;
+            }
+
             .hero-grid, .contact-box, .portfolio-grid {
                 grid-template-columns: 1fr;
+                gap: 30px;
             }
+
+            .hero-text h1 {
+                font-size: 2.4rem;
+            }
+
+            .frame-medieval img {
+                height: 350px;
+            }
+
+            .portfolio-img-box {
+                height: 280px;
+            }
+
+            .contact-box {
+                padding: 30px 20px;
+            }
+
             .contact-info {
                 border-right: none;
                 border-bottom: 1px solid var(--border-medieval);
                 padding-bottom: 30px;
                 padding-right: 0;
+            }
+        }
+
+        /* AJUSTES EXTRAS PARA PANTALLAS PEQUEÑAS DE TELÉFONOS */
+        @media (max-width: 480px) {
+            .hero-text h1 {
+                font-size: 2rem;
+            }
+
+            .section-title h2 {
+                font-size: 1.8rem;
+            }
+
+            .nav-menu {
+                gap: 12px;
+            }
+
+            .nav-link {
+                font-size: 0.75rem;
+                letter-spacing: 1px;
+            }
+
+            .frame-medieval img {
+                height: 260px;
+            }
+
+            .portfolio-img-box {
+                height: 230px;
             }
         }
     </style>
