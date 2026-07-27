@@ -50,7 +50,7 @@
             font-size: 16px;
             line-height: 1.6;
             overflow-x: hidden;
-            /* Textura de empuñadura mejorada */
+            /* Textura de empuñadura */
             background-image: 
                 linear-gradient(45deg, var(--cam-grip) 25%, transparent 25%), 
                 linear-gradient(-45deg, var(--cam-grip) 25%, transparent 25%),
@@ -195,7 +195,7 @@
             min-height: 100vh;
             display: flex;
             align-items: center;
-            padding-top: 120px; /* Offset para el header */
+            padding-top: 120px;
             background: radial-gradient(circle at center, #1a1a1d 0%, var(--cam-body) 70%);
         }
 
@@ -224,7 +224,6 @@
             max-width: 600px;
         }
 
-        /* BOTÓN MECANIZADO */
         .btn-cam {
             display: inline-flex;
             align-items: center;
@@ -300,7 +299,6 @@
             filter: contrast(110%) saturate(110%);
         }
 
-        /* Superposiciones AF */
         .af-corners {
             position: absolute;
             top: 25px;
@@ -428,66 +426,6 @@
         }
 
         /* =========================================
-           PORTAFOLIO (Tarjeta LCD)
-           ========================================= */
-        .portfolio-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 30px;
-        }
-
-        .portfolio-item {
-            background: #000;
-            border: 3px solid var(--cam-metal);
-            padding: 10px;
-            border-radius: 4px;
-            position: relative;
-            transition: all 0.4s var(--ease);
-            box-shadow: var(--shadow-inset), var(--shadow-dark);
-        }
-
-        .portfolio-item:hover {
-            border-color: var(--accent-red);
-            transform: scale(1.02) translateY(-5px);
-            box-shadow: 0 20px 50px rgba(225, 29, 72, 0.3), var(--shadow-inset);
-        }
-
-        .portfolio-img-box {
-            height: 350px;
-            overflow: hidden;
-            position: relative;
-            border-radius: 2px;
-        }
-
-        .portfolio-img-box img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.6s var(--ease), filter 0.6s var(--ease);
-            filter: grayscale(20%);
-        }
-
-        .portfolio-item:hover img {
-            transform: scale(1.08);
-            filter: grayscale(0%) contrast(105%);
-        }
-
-        /* Info HUD de la foto */
-        .portfolio-hud {
-            display: flex;
-            justify-content: space-between;
-            padding: 12px 5px 2px 5px;
-            font-family: var(--font-tech);
-            font-size: 0.7rem;
-            color: var(--text-muted);
-            letter-spacing: 0.5px;
-        }
-        
-        .portfolio-hud span:first-child {
-            color: var(--text-main);
-        }
-
-        /* =========================================
            CONTACTO (Panel de Control)
            ========================================= */
         .contact-panel {
@@ -504,7 +442,6 @@
             position: relative;
         }
         
-        /* Luz indicadora de encendido */
         .contact-panel::before {
             content: '';
             position: absolute;
@@ -530,7 +467,6 @@
             margin-bottom: 15px;
         }
 
-        /* TRIGGER WHATSAPP */
         .whatsapp-trigger {
             margin-top: 30px;
             display: inline-flex;
@@ -567,7 +503,6 @@
             transform: scale(1.1) rotate(-10deg);
         }
 
-        /* FORMULARIO GRABADO */
         .form-group {
             margin-bottom: 25px;
         }
@@ -623,7 +558,6 @@
            ========================================= */
         @media (max-width: 1100px) {
             .hero-text h1 { font-size: 3rem; }
-            .portfolio-grid { grid-template-columns: repeat(2, 1fr); }
         }
 
         @media (max-width: 900px) {
@@ -642,15 +576,13 @@
                 align-items: center;
             }
             
-            .camera-hud-info, .nav-menu { display: none; } /* En móvil simplificamos */
+            .camera-hud-info, .nav-menu { display: none; }
             .logo-camera { font-size: 1.3rem; }
         }
 
         @media (max-width: 600px) {
             .hero-text h1 { font-size: 2.4rem; }
             .section-header h2 { font-size: 2.2rem; }
-            .portfolio-grid { grid-template-columns: 1fr; }
-            .portfolio-img-box { height: 300px; }
             .btn-cam { width: 100%; justify-content: center; }
         }
     </style>
@@ -676,7 +608,6 @@
             <ul class="nav-menu">
                 <li><a href="#home" class="nav-link">Visor</a></li>
                 <li><a href="#services" class="nav-link">Diales</a></li>
-                <li><a href="#portfolio" class="nav-link">Galería</a></li>
                 <li><a href="#contact" class="nav-link">Disparo</a></li>
             </ul>
         </div>
@@ -692,7 +623,6 @@
             </div>
             
             <div class="viewfinder-frame">
-                <!-- Imagen de alta calidad de una cámara Hasselblad profesional -->
                 <img src="https://images.unsplash.com/photo-1520390138845-fd2d229dd553?q=80&w=1200&auto=format&fit=crop" alt="Óptica Profesional Solis Estudio">
                 <div class="af-corners">
                     <div class="af-box"></div>
@@ -729,51 +659,6 @@
                     <span class="dial-badge"><i class="fa-solid fa-wand-magic-sparkles"></i></span>
                     <h3>Post-Procesado RAW</h3>
                     <p>Revelado digital avanzado, *color grading* cinematográfico y retoque *high-end* conservando la integridad óptica.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- PORTAFOLIO (Review LCD) -->
-    <section id="portfolio">
-        <div class="container">
-            <div class="section-header">
-                <p>[ Playback / SD Card A ]</p>
-                <h2>Capturas Recientes</h2>
-            </div>
-
-            <div class="portfolio-grid">
-                <!-- Foto 1: Retrato High-End -->
-                <div class="portfolio-item">
-                    <div class="portfolio-img-box">
-                        <img src="https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?q=80&w=800&auto=format&fit=crop" alt="Retrato Editorial">
-                    </div>
-                    <div class="portfolio-hud">
-                        <span>SOL_PORT_001.ARW</span>
-                        <span>85mm | f/1.4 | 1/250s</span>
-                    </div>
-                </div>
-
-                <!-- Foto 2: Arquitectura/Luz -->
-                <div class="portfolio-item">
-                    <div class="portfolio-img-box">
-                        <img src="https://images.unsplash.com/photo-1496568818557-b1434d810a6d?q=80&w=800&auto=format&fit=crop" alt="Fotografía de Arquitectura Comercial">
-                    </div>
-                    <div class="portfolio-hud">
-                        <span>SOL_ARCH_045.ARW</span>
-                        <span>24mm | f/8.0 | 1/160s</span>
-                    </div>
-                </div>
-
-                <!-- Foto 3: Producto/Tecnología -->
-                <div class="portfolio-item">
-                    <div class="portfolio-img-box">
-                        <img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?q=80&w=800&auto=format&fit=crop" alt="Fotografía de Producto de Lujo">
-                    </div>
-                    <div class="portfolio-hud">
-                        <span>SOL_PROD_102.ARW</span>
-                        <span>105mm | f/11 | 1/125s</span>
-                    </div>
                 </div>
             </div>
         </div>
