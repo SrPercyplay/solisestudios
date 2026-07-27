@@ -391,89 +391,6 @@
             font-size: 1rem;
         }
 
-        /* PORTFOLIO GALLERY */
-        .portfolio-filter {
-            display: flex;
-            justify-content: center;
-            gap: 15px;
-            margin-bottom: 40px;
-            flex-wrap: wrap;
-        }
-
-        .filter-btn {
-            background: transparent;
-            border: 1px solid var(--glass-border);
-            color: var(--text-muted);
-            padding: 8px 20px;
-            border-radius: 20px;
-            cursor: pointer;
-            font-family: var(--font-title);
-            font-size: 0.8rem;
-            transition: all 0.3s ease;
-        }
-
-        .filter-btn.active, .filter-btn:hover {
-            background: var(--primary-neon);
-            color: var(--bg-color);
-            border-color: var(--primary-neon);
-            box-shadow: 0 0 10px rgba(0, 240, 255, 0.5);
-        }
-
-        .portfolio-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-            gap: 25px;
-        }
-
-        .portfolio-item {
-            position: relative;
-            border-radius: 10px;
-            overflow: hidden;
-            border: 1px solid var(--glass-border);
-            height: 280px;
-            transition: transform 0.4s ease, opacity 0.4s ease;
-        }
-
-        .portfolio-item img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.5s ease;
-        }
-
-        .portfolio-overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(to top, rgba(3,7,18,0.9), transparent);
-            display: flex;
-            flex-direction: column;
-            justify-content: flex-end;
-            padding: 20px;
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        }
-
-        .portfolio-item:hover img {
-            transform: scale(1.1);
-        }
-
-        .portfolio-item:hover .portfolio-overlay {
-            opacity: 1;
-        }
-
-        .portfolio-overlay h4 {
-            color: #fff;
-            font-size: 1.1rem;
-        }
-
-        .portfolio-overlay p {
-            color: var(--primary-neon);
-            font-size: 0.9rem;
-        }
-
         /* ABOUT / TECH SECTION */
         .about-grid {
             display: grid;
@@ -707,7 +624,6 @@
                         <li><a href="#services">Edición & IA Studio</a></li>
                     </ul>
                 </li>
-                <li><a href="#portfolio" class="nav-link">Portafolio</a></li>
                 <li><a href="#about" class="nav-link">Tecnología</a></li>
                 <li><a href="#contact" class="nav-link">Contacto</a></li>
             </ul>
@@ -721,7 +637,7 @@
                 <h1>Capturando el <span>Futuro</span> en cada Fotograma</h1>
                 <p>Fotografía profesional de alta gama integrada con estética neofuturista y procesamiento digital avanzado para proyectos que buscan destacar.</p>
                 <div class="hero-buttons">
-                    <a href="#portfolio" class="btn btn-primary"><i class="fa-solid fa-eye"></i> Ver Galería</a>
+                    <a href="#services" class="btn btn-primary"><i class="fa-solid fa-list"></i> Servicios</a>
                     <a href="#contact" class="btn btn-outline"><i class="fa-solid fa-paper-plane"></i> Cotizar</a>
                 </div>
             </div>
@@ -761,47 +677,6 @@
                     <div class="service-icon"><i class="fa-solid fa-wand-magic-sparkles"></i></div>
                     <h3>Edición Avanzada</h3>
                     <p>Postproducción digital con retouching de precisión, color grading cinemático e integración con IA.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- PORTFOLIO SECTION -->
-    <section class="portfolio" id="portfolio">
-        <div class="container">
-            <div class="section-title">
-                <h2>Portafolio Destacado</h2>
-                <p>Muestra de composiciones e iluminación creativa</p>
-            </div>
-
-            <div class="portfolio-filter">
-                <button class="filter-btn active" data-filter="all">Todos</button>
-                <button class="filter-btn" data-filter="retratos">Retratos</button>
-                <button class="filter-btn" data-filter="urbano">Urbano / Sci-Fi</button>
-                <button class="filter-btn" data-filter="moda">Moda</button>
-            </div>
-
-            <div class="portfolio-grid">
-                <div class="portfolio-item" data-category="retratos">
-                    <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=800&q=80" alt="Retrato Neón">
-                    <div class="portfolio-overlay">
-                        <p>Retrato Neón</p>
-                        <h4>Luces Cyberpunk</h4>
-                    </div>
-                </div>
-                <div class="portfolio-item" data-category="urbano">
-                    <img src="https://images.unsplash.com/photo-1519501025264-65ba15a82390?auto=format&fit=crop&w=800&q=80" alt="Ciudad Futurista">
-                    <div class="portfolio-overlay">
-                        <p>Urbano</p>
-                        <h4>Noche de Neón</h4>
-                    </div>
-                </div>
-                <div class="portfolio-item" data-category="moda">
-                    <img src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&w=800&q=80" alt="Moda Futurista">
-                    <div class="portfolio-overlay">
-                        <p>Moda Sci-Fi</p>
-                        <h4>Neo-Vanguardia</h4>
-                    </div>
                 </div>
             </div>
         </div>
@@ -858,15 +733,11 @@
                         <input type="text" id="name" class="form-control" placeholder="Tu nombre" required>
                     </div>
                     <div class="form-group">
-                        <label for="email">Correo Electrónico</label>
-                        <input type="email" id="email" class="form-control" placeholder="tu@email.com" required>
-                    </div>
-                    <div class="form-group">
                         <label for="message">Mensaje / Detalle del Proyecto</label>
                         <textarea id="message" class="form-control" placeholder="Escribe los detalles de tu proyecto..." required></textarea>
                     </div>
                     <button type="submit" class="btn btn-primary" style="width: 100%; justify-content: center;">
-                        <i class="fa-solid fa-paper-plane"></i> Enviar Mensaje
+                        <i class="fa-brands fa-whatsapp"></i> Enviar a WhatsApp
                     </button>
                 </form>
             </div>
@@ -913,41 +784,19 @@
             });
         });
 
-        // Gallery filtering functionality
-        const filterBtns = document.querySelectorAll('.filter-btn');
-        const portfolioItems = document.querySelectorAll('.portfolio-item');
-
-        filterBtns.forEach(btn => {
-            btn.addEventListener('click', () => {
-                filterBtns.forEach(b => b.classList.remove('active'));
-                btn.classList.add('active');
-
-                const filterValue = btn.getAttribute('data-filter');
-
-                portfolioItems.forEach(item => {
-                    if (filterValue === 'all' || item.getAttribute('data-category') === filterValue) {
-                        item.style.display = 'block';
-                        setTimeout(() => {
-                            item.style.opacity = '1';
-                            item.style.transform = 'scale(1)';
-                        }, 10);
-                    } else {
-                        item.style.opacity = '0';
-                        item.style.transform = 'scale(0.8)';
-                        setTimeout(() => {
-                            item.style.display = 'none';
-                        }, 300);
-                    }
-                });
-            });
-        });
-
-        // Form submission alert setup
+        // Form submission redirect to WhatsApp
         const contactForm = document.getElementById('contactForm');
         contactForm.addEventListener('submit', (e) => {
             e.preventDefault();
-            alert('¡Gracias por comunicarte con Solis Estudio! Responderemos tu mensaje en breve.');
-            contactForm.reset();
+            
+            const name = document.getElementById('name').value;
+            const message = document.getElementById('message').value;
+            const phoneNumber = "59162617853";
+            
+            const whatsappText = `Hola, mi nombre es ${encodeURIComponent(name)}. ${encodeURIComponent(message)}`;
+            const whatsappUrl = `https://wa.me/${phoneNumber}?text=${whatsappText}`;
+            
+            window.open(whatsappUrl, '_blank');
         });
     </script>
 </body>
