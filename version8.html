@@ -428,199 +428,143 @@
                 padding: 70px 0;
             }
 
-            .container {
-                padding: 0 20px;
-            }
-
-            .nav-container {
-                flex-direction: column;
-                gap: 15px;
-                padding: 15px 0;
-            }
-
-            .nav-menu {
-                gap: 20px;
-                flex-wrap: wrap;
-                justify-content: center;
-            }
-
-            .dropdown-menu {
-                position: static;
-                opacity: 1;
-                visibility: visible;
-                width: 100%;
-                background: transparent;
-                border: none;
-                padding: 5px 0 0 10px;
-                display: none;
-            }
-
-            .dropdown:hover .dropdown-menu {
-                display: block;
-            }
-
-            .hero {
-                min-height: auto;
-                padding-top: 140px;
-            }
-
-            .hero-grid, .contact-box, .portfolio-grid {
+            .hero-grid {
                 grid-template-columns: 1fr;
-                gap: 30px;
+                gap: 40px;
+                text-align: center;
             }
 
-            .hero-text h1 {
-                font-size: 2.4rem;
-            }
-
-            .frame-medieval img {
-                height: 350px;
-            }
-
-            .portfolio-img-box {
-                height: 280px;
+            .portfolio-grid {
+                grid-template-columns: repeat(2, 1fr);
             }
 
             .contact-box {
-                padding: 30px 20px;
+                grid-template-columns: 1fr;
+                padding: 30px;
             }
 
             .contact-info {
                 border-right: none;
                 border-bottom: 1px solid var(--border-medieval);
-                padding-bottom: 30px;
                 padding-right: 0;
+                padding-bottom: 30px;
             }
         }
 
-        /* AJUSTES EXTRAS PARA PANTALLAS PEQUEÑAS DE TELÉFONOS */
-        @media (max-width: 480px) {
-            .hero-text h1 {
-                font-size: 2rem;
-            }
-
-            .section-title h2 {
-                font-size: 1.8rem;
-            }
-
+        @media (max-width: 580px) {
             .nav-menu {
-                gap: 12px;
+                display: none;
             }
 
-            .nav-link {
-                font-size: 0.75rem;
-                letter-spacing: 1px;
+            .portfolio-grid {
+                grid-template-columns: 1fr;
             }
 
-            .frame-medieval img {
-                height: 260px;
-            }
-
-            .portfolio-img-box {
-                height: 230px;
+            .hero-text h1 {
+                font-size: 2.2rem;
             }
         }
     </style>
 </head>
 <body>
 
-    <!-- HEADER -->
+    <!-- ENCABEZADO Y NAVEGACIÓN -->
     <header>
         <div class="container nav-container">
             <a href="#" class="logo">SOLIS <span>ESTUDIO</span></a>
             <ul class="nav-menu">
-                <li><a href="#home" class="nav-link">Inicio</a></li>
+                <li><a href="#inicio" class="nav-link">Inicio</a></li>
                 <li class="dropdown">
-                    <a href="#services" class="nav-link">Disciplinas <i class="fa-solid fa-chevron-down" style="font-size: 0.6rem;"></i></a>
+                    <a href="#servicios" class="nav-link">Especialidades <i class="fa-solid fa-chevron-down" style="font-size: 0.6rem;"></i></a>
                     <ul class="dropdown-menu">
-                        <li><a href="#services">Retrato Fine-Art</a></li>
-                        <li><a href="#services">Fotografía de Época</a></li>
-                        <li><a href="#services">Edición Barroca</a></li>
+                        <li><a href="#servicios">Retrato Oscuro</a></li>
+                        <li><a href="#servicios">Arte Conceptual</a></li>
+                        <li><a href="#servicios">Fotografía Editorial</a></li>
                     </ul>
                 </li>
-                <li><a href="#portfolio" class="nav-link">Galería</a></li>
-                <li><a href="#contact" class="nav-link">Contacto</a></li>
+                <li><a href="#portafolio" class="nav-link">Galería</a></li>
+                <li><a href="#contacto" class="nav-link">Contacto</a></li>
             </ul>
         </div>
     </header>
 
-    <!-- HERO -->
-    <section class="hero" id="home">
+    <!-- HÉROE -->
+    <section id="inicio" class="hero">
         <div class="container hero-grid">
             <div class="hero-text">
-                <h1>Claroscuro & Retrato Atemporal</h1>
-                <div class="divider-ornament">◆ 🕮 ◆</div>
-                <p>Preservamos la solemnidad del instante. Estudio especializado en iluminación clásica, claroscuro y composiciones de inspiración renacentista.</p>
-                <a href="#contact" class="btn">Solicitar Audiencia</a>
+                <h1>Capturando la Esencia de la Penumbra</h1>
+                <p>Fotografía de autor y visión artística inspirada en la estética medieval, claroscuros profundos y la belleza sobria de lo atemporal.</p>
+                <div class="divider-ornament">◆ 🕇 ◆</div>
+                <a href="#contacto" class="btn">Reservar Sesión</a>
             </div>
             <div class="frame-medieval">
-                <img src="https://images.unsplash.com/photo-1579783900882-c0d3dad7b119?auto=format&fit=crop&w=800&q=80" alt="Fotografía Claroscuro Solis Estudio">
+                <img src="https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&fit=crop&w=800&q=80" alt="Retrato sobrio de Solis Estudio">
             </div>
         </div>
     </section>
 
-    <!-- SERVICIOS -->
-    <section id="services">
+    <!-- SERVICIOS / ESPECIALIDADES -->
+    <section id="servicios">
         <div class="container">
             <div class="section-title">
-                <p>Nuestras Artes</p>
-                <h2>Servicios de Estudio</h2>
+                <h2>Servicios & Arte</h2>
+                <p>Especialidades fotográficas de alta solemnidad</p>
                 <div class="divider-ornament">❖</div>
             </div>
             <div class="services-grid">
                 <div class="service-card">
+                    <div class="service-icon"><i class="fa-solid fa-eye"></i></div>
+                    <h3>Retrato Barroco</h3>
+                    <p>Iluminación dramática inspirada en los grandes maestros del claroscuro. Retratos que evocan misterio y profundidad.</p>
+                </div>
+                <div class="service-card">
                     <div class="service-icon"><i class="fa-solid fa-scroll"></i></div>
-                    <h3>Retrato Dramático</h3>
-                    <p>Estudio de luz cenital y sombras pronunciadas evocando las obras de los grandes maestros.</p>
+                    <h3>Arte Conceptual</h3>
+                    <p>Narrativas visuales góticas y medievales para proyectos musicales, portadas de libros y publicaciones de autor.</p>
                 </div>
                 <div class="service-card">
-                    <div class="service-icon"><i class="fa-solid fa-feather"></i></div>
-                    <h3>Edición Fine-Art</h3>
-                    <p>Tratamiento digital que aporta textura sutil de lienzo y tonos sepia / opacos.</p>
-                </div>
-                <div class="service-card">
-                    <div class="service-icon"><i class="fa-solid fa-shield-halved"></i></div>
-                    <h3>Cobertura Solemnes</h3>
-                    <p>Documentación discreta para eventos y reuniones de gran elegancia y carácter.</p>
+                    <div class="service-icon"><i class="fa-solid fa-gem"></i></div>
+                    <h3>Editorial & Moda</h3>
+                    <p>Composiciones meticulosas con vestuario de época, texturas orgánicas y tonos ocres/opacos.</p>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- PORTAFOLIO -->
-    <section id="portfolio">
+    <section id="portafolio">
         <div class="container">
             <div class="section-title">
-                <p>Muestra Anual</p>
                 <h2>Galería de Obras</h2>
+                <p>Una selección de pasajes y visiones</p>
                 <div class="divider-ornament">❖</div>
             </div>
             <div class="portfolio-grid">
                 <div class="portfolio-item">
                     <div class="portfolio-img-box">
-                        <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=800&q=80" alt="Obra 1">
+                        <img src="https://images.unsplash.com/photo-1509114397022-ed747cca3f65?auto=format&fit=crop&w=600&q=80" alt="Obra I">
                     </div>
                     <div class="portfolio-info">
-                        <h4>La Mirada Austera</h4>
-                        <span>Retrato en Penumbra</span>
+                        <h4>Sombra & Bronce</h4>
+                        <span>Retrato Conceptual</span>
                     </div>
                 </div>
                 <div class="portfolio-item">
                     <div class="portfolio-img-box">
-                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=800&q=80" alt="Obra 2">
+                        <img src="https://images.unsplash.com/photo-1534447677768-be436bb09401?auto=format&fit=crop&w=600&q=80" alt="Obra II">
                     </div>
                     <div class="portfolio-info">
-                        <h4>Estudio sobre Bronce</h4>
-                        <span>Perfil Clásico</span>
+                        <h4>El Silencio del Bosque</h4>
+                        <span>Fotografía de Paisaje</span>
                     </div>
                 </div>
                 <div class="portfolio-item">
                     <div class="portfolio-img-box">
-                        <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=800&q=80" alt="Obra 3">
+                        <img src="https://images.unsplash.com/photo-1514533450685-4493e01d1fdc?auto=format&fit=crop&w=600&q=80" alt="Obra III">
                     </div>
                     <div class="portfolio-info">
-                        <h4>Claroscuro I</h4>
-                        <span>Composición Nocturna</span>
+                        <h4>Arquitectura Sacra</h4>
+                        <span>Espacios & Sombras</span>
                     </div>
                 </div>
             </div>
@@ -628,33 +572,34 @@
     </section>
 
     <!-- CONTACTO -->
-    <section id="contact">
+    <section id="contacto">
         <div class="container">
             <div class="section-title">
-                <p>Envíe su Mensaje</p>
-                <h2>Contacto Directo</h2>
+                <h2>Envía tu Mensaje</h2>
+                <p>Inicia la creación de tu visión artística</p>
                 <div class="divider-ornament">❖</div>
             </div>
             <div class="contact-box">
                 <div class="contact-info">
                     <h3>Solis Estudio</h3>
-                    <p style="color: var(--text-muted); font-size: 0.95rem; margin-top: 10px;">Atención personalizada para reservas y proyectos fotográficos de alta sobriedad.</p>
-                    <a href="https://wa.me/59162617853" target="_blank" class="whatsapp-link">
-                        <i class="fa-brands fa-whatsapp"></i> +591 62617853
+                    <p style="color: var(--text-muted); margin-top: 10px; font-size: 0.95rem;">Atención bajo cita previa para garantizar la atmósfera adecuada en cada trabajo.</p>
+                    <a href="https://wa.me/123456789" class="whatsapp-link" target="_blank">
+                        <i class="fa-brands fa-whatsapp"></i>
+                        <span>Contactar por WhatsApp</span>
                     </a>
                 </div>
                 <form onsubmit="event.preventDefault();">
                     <div class="form-group">
-                        <label>Nombre o Título</label>
-                        <input type="text" class="form-control" placeholder="Ej. Gabriel Solis">
+                        <label for="nombre">Nombre / Seudónimo</label>
+                        <input type="text" id="nombre" class="form-control" placeholder="Escribe tu nombre">
                     </div>
                     <div class="form-group">
-                        <label>Correo Electrónico</label>
-                        <input type="email" class="form-control" placeholder="contacto@dominio.com">
+                        <label for="email">Correo Electrónico</label>
+                        <input type="email" id="email" class="form-control" placeholder="Escribe tu correo">
                     </div>
                     <div class="form-group">
-                        <label>Detalle de la Sesión</label>
-                        <textarea class="form-control" rows="3" placeholder="Escriba aquí los detalles..."></textarea>
+                        <label for="mensaje">Detalles de la Visión</label>
+                        <textarea id="mensaje" class="form-control" rows="4" placeholder="Describe el proyecto o consulta..."></textarea>
                     </div>
                     <button type="submit" class="btn" style="width: 100%;">Enviar Mensaje</button>
                 </form>
@@ -664,7 +609,9 @@
 
     <!-- FOOTER -->
     <footer>
-        <p>&copy; 2026 Solis Estudio. Todos los derechos reservados.</p>
+        <div class="container">
+            <p>&copy; 2026 Solis Estudio. Todos los derechos reservados. | Arte & Fotografía Oscura</p>
+        </div>
     </footer>
 
 </body>
