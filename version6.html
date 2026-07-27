@@ -664,10 +664,9 @@
                         <i class="fa-solid fa-angle-down" style="font-size: 0.7rem; margin-left: auto;"></i>
                     </a>
                     <ul class="submenu">
-                        <li><a href="#services">Retrato Editorial</a></li>
-                        <li><a href="#services">Fotografía de Paisaje</a></li>
-                        <li><a href="#services">Documental y Eventos</a></li>
-                        <li><a href="#services">Revelado Analógico</a></li>
+                        <li><a href="#services">Fotografía Profesional</a></li>
+                        <li><a href="#services">Edición Digital</a></li>
+                        <li><a href="#services">Retoque Fotográfico</a></li>
                     </ul>
                 </li>
                 <li><a href="#portfolio" class="sidebar-link"><i class="fa-solid fa-images"></i> Galería</a></li>
@@ -706,33 +705,33 @@
             </div>
         </section>
 
-        <!-- SERVICIOS -->
+        <!-- SERVICIOS / ESPECIALIDADES -->
         <section id="services">
             <div class="section-title">
-                <h2>Servicios Fotográficos</h2>
-                <p>Especialidades con estilo propio y acabado natural</p>
+                <h2>Fotografía y Edición</h2>
+                <p>Especialidades enfocadas en captura de alta calidad y procesado fino</p>
             </div>
 
             <div class="services-grid">
                 <div class="service-box">
-                    <i class="fa-solid fa-user service-icon"></i>
-                    <h3>Retrato en Exterior</h3>
-                    <p>Aprovechamiento de la luz natural dorada para lograr retratos íntimos, cálidos y llenos de expresividad.</p>
+                    <i class="fa-solid fa-camera service-icon"></i>
+                    <h3>Fotografía Retrato</h3>
+                    <p>Captura de momentos únicos aprovechando la luz natural y encuadres expresivos de alta calidad.</p>
                 </div>
                 <div class="service-box">
-                    <i class="fa-solid fa-tree service-icon"></i>
-                    <h3>Naturaleza & Arquitectura</h3>
-                    <p>Enfoque detallado en estructuras orgánicas, maderas, paisajes y entornos rústicos con carácter.</p>
-                </div>
-                <div class="service-box">
-                    <i class="fa-solid fa-heart service-icon"></i>
-                    <h3>Bodas Íntimas & Eventos</h3>
-                    <p>Documentación fotográfica sin posados artificiales, capturando la autenticidad y calidez de las emociones.</p>
+                    <i class="fa-solid fa-mountain-sun service-icon"></i>
+                    <h3>Fotografía de Paisaje y Entornos</h3>
+                    <p>Documentación de espacios orgánicos, naturaleza y arquitectura rústica con gran nivel de detalle.</p>
                 </div>
                 <div class="service-box">
                     <i class="fa-solid fa-sliders service-icon"></i>
-                    <h3>Edición de Tono Cálido</h3>
-                    <p>Tratamiento de color artesanal dando prioridad a tonos tierra, madera, dorados y contrastes suaves.</p>
+                    <h3>Edición y Corrección de Color</h3>
+                    <p>Procesamiento artesanal centrado en tonos cálidos, maderas, dorados y contrastes equilibrados.</p>
+                </div>
+                <div class="service-box">
+                    <i class="fa-solid fa-wand-magic-sparkles service-icon"></i>
+                    <h3>Retoque Avanzado</h3>
+                    <p>Limpieza y optimización fina de imágenes para conservación de texturas y acabado profesional.</p>
                 </div>
             </div>
         </section>
@@ -821,21 +820,17 @@
                     </div>
                 </div>
 
-                <form class="rustic-form" onsubmit="event.preventDefault();">
+                <form class="rustic-form" id="whatsappForm">
                     <div class="form-group">
                         <label for="name">Nombre Completo</label>
-                        <input type="text" id="name" class="form-control" placeholder="Escribe tu nombre">
-                    </div>
-                    <div class="form-group">
-                        <label for="email">Correo Electrónico</label>
-                        <input type="email" id="email" class="form-control" placeholder="correo@ejemplo.com">
+                        <input type="text" id="name" class="form-control" placeholder="Escribe tu nombre" required>
                     </div>
                     <div class="form-group">
                         <label for="message">Mensaje / Proyecto</label>
-                        <textarea id="message" class="form-control" rows="4" placeholder="Cuéntame sobre la sesión o evento que deseas planificar..."></textarea>
+                        <textarea id="message" class="form-control" rows="4" placeholder="Cuéntame sobre la sesión o proyecto que deseas planificar..." required></textarea>
                     </div>
                     <button type="submit" class="btn btn-wood" style="width: 100%;">
-                        <i class="fa-solid fa-paper-plane"></i> Enviar Consulta
+                        <i class="fa-brands fa-whatsapp"></i> Enviar a WhatsApp
                     </button>
                 </form>
             </div>
@@ -896,6 +891,19 @@
                     }
                 });
             });
+        });
+
+        // Redirección del Formulario a WhatsApp
+        document.getElementById('whatsappForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const name = document.getElementById('name').value;
+            const message = document.getElementById('message').value;
+            const phone = "59162617853";
+
+            const text = `Hola, mi nombre es ${name}. ${message}`;
+            const whatsappUrl = `https://wa.me/${phone}?text=${encodeURIComponent(text)}`;
+
+            window.open(whatsappUrl, '_blank');
         });
     </script>
 </body>
